@@ -19,11 +19,26 @@
             </div>
         </asp:View>
         <asp:View ID="View2" runat="server">
-            <h3>This will show the items that were linked to the reservation code</h3>
-            (Number) items were found linked to reservation code:<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            <div class="card justify-content-between align-items-center  w-100 mb-3">
+                <h3>Your Items</h3>
+                <p>(Number) items were found linked to reservation code: <asp:Label CssClass="fw-bold" ID="Label2" runat="server" Text="Label"></asp:Label></p>
+                <asp:ListBox CssClass="w-100" ID="listItems" runat="server"></asp:ListBox>
+                <p>Fill in the form below to process your claim</p>
+                <p class="text-black-50 fs-6">This is to confirm your identity</p>
+                <!---Form starts here--->
+                    <asp:Label CssClass="form-label" ID="Label4" runat="server" Text="Name and Surname"></asp:Label>
+                    <asp:TextBox CssClass="form-control" placeholder="John Doe" ID="txtName" runat="server"></asp:TextBox>
+                    <asp:Label CssClass="form-label" ID="Label6" runat="server" Text="Phone Number"></asp:Label>
+                    <asp:TextBox CssClass="form-control" placeholder="067 123 1234" ID="txtNumber" type="number" runat="server"></asp:TextBox>
+                    <asp:Label CssClass="form-label" ID="Label5" runat="server" Text="Reservation Code"></asp:Label>
+                    <asp:TextBox CssClass="form-control" ID="txtConfirmCode" runat="server"></asp:TextBox>
+                    <asp:Button CssClass="btn btn-primary mt-2 w-100 mb-3" ID="Button1" runat="server" Text="Claim Items" />
+                <!---Form ends here--->
+            </div>
         </asp:View>
+
         <asp:View ID="View3" runat="server">
-            <h3>This will show the message explaining that no items were found</h3><asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            Unfortunately, no items were found linking to reservation code: <asp:Label CssClass="fw-bold" ID="Label3" runat="server" Text="Label"></asp:Label>
 
         </asp:View>
     </asp:MultiView>
