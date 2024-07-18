@@ -48,7 +48,7 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Booking</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Lost&found</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/lost-found.aspx">Lost&found</a></li>
                     </ul>
                     <a class="text-white text-decoration-none nav-item btn btn-primary" runat="server" href="~/">Login</a>
 
@@ -58,7 +58,6 @@
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
             <footer class="bg-black w-100 position-absolute text-white-50" style="bottom: 0;left:0;">
                 <p>&copy; <%: DateTime.Now.Year %> - Potch Stream Hotel</p>
             </footer>
