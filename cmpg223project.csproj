@@ -125,6 +125,7 @@
     <Content Include="Exterior\exterior 2.jpg" />
     <Content Include="Exterior\exterior 3.jpg" />
     <Content Include="Exterior\exterior of hotel.jpg" />
+    <Content Include="Exterior\home.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="lost-found.aspx" />
