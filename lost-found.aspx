@@ -2,27 +2,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Lost and Found</h1>
     
-    
+    <main class="flex flex-col justify-center items-center">
     <asp:MultiView ID="MultiView1" runat="server">
         <asp:View ID="View1" runat="server">
             <p class="text-black-50">
                 If you have lost or forgot your items in the room you were occupying, please fill in the form to check if any items were found.
             </p>
-            <div class="w-100 flex justify-content-between align-items-center">
-                <div class="card p-5 g-3 justify-content-center align-items-center">
+            
+                <div class="card mt-5 p-5 g-3 justify-content-center align-items-center">
                     <asp:Label CssClass="form-label" ID="Label1" runat="server" Text="Enter Reservation code to proceed"></asp:Label>
                     <asp:TextBox placeholder="Code" CssClass="form-control" ID="txtReservationCode" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Reservation Code is required to proceed!!" ControlToValidate="txtReservationCode"></asp:RequiredFieldValidator>
                     <asp:Button CssClass="btn btn-primary w-75" ID="btnCheckItems" runat="server" Text="Check Items" OnClick="btnCheckItems_Click" />
 
                 </div>
-            </div>
+           
         </asp:View>
         <asp:View ID="View2" runat="server">
-            <div class="card justify-content-between align-items-center  w-100 mb-3">
+            <div class="card flex flex-col justify-center items-center  w-100 mb-3">
                 <h3>Your Items</h3>
                 <p>(Number) items were found linked to reservation code: <asp:Label CssClass="fw-bold" ID="Label2" runat="server" Text="Label"></asp:Label></p>
                 <asp:ListBox CssClass="w-100" ID="listItems" runat="server"></asp:ListBox>
+                <!--- Use GridView -->
                 <p>Fill in the form below to process your claim</p>
                 <p class="text-black-50 fs-6">This is to confirm your identity</p>
                 <!---Form starts here--->
@@ -42,6 +43,6 @@
 
         </asp:View>
     </asp:MultiView>
-    
+    </main>
 
 </asp:Content>

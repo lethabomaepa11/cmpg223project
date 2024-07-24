@@ -14,7 +14,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
     <title>Admin Page</title>
+    <style>
+    *{
+        font-family: Open Sans, sans-serif;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-family: Poppins, sans-serif;
+    }
+</style>
     
 </head>
 <body>
@@ -61,10 +70,12 @@
                                 <div class="bg-white rounded-lg w-2/4 p-3  flex justify-between">
                                     <h1 class="font-bold">Transactions</h1>
                                     <asp:LinkButton runat="server" OnClick="LinkButton3_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
+                                    <!--- Use GridView -->
                                 </div>
                                 <div class="bg-white rounded-lg w-2/4 p-3  flex justify-between">
                                     <h1 class="font-bold">Lost and found items</h1>
                                     <asp:LinkButton runat="server" OnClick="LinkButton2_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
+                                    <!--- Use GridView -->
                                 </div>
                             </section>
                             <section class="flex justify-between">
@@ -95,18 +106,19 @@
                     <asp:View ID="View2" runat="server">
                         <header class="bg-slate-200 w-full p-3">
                             <h1 class="text-2xl font-bold">Lost and found</h1>
-                            
+                            <!--- Use GridView -->
                         </header>
                     </asp:View>
                     <asp:View ID="View3" runat="server">
                         <header class="bg-slate-200 w-full p-3">
                             <h1 class="text-2xl font-bold">Transactions</h1>
-                           
+                           <!--- Use GridView -->
                         </header>
                     </asp:View>
                 </asp:MultiView>
             </main>
         </div>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
 </html>

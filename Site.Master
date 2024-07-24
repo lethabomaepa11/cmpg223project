@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="icons/css/all.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"/>
@@ -20,8 +20,16 @@
         }
         h1,h2,h3,h4,h5,h6{
             font-family: Poppins, sans-serif;
+            font-weight: 500;
+            font-size: 2rem;
         }
     </style>
+    <script>
+        const toggleNav = () => {
+            const nav = document.getElementById("nav");
+            nav.style.display === "none" ? nav.style.display = "flex" : nav.style.display = "none";
+        }
+    </script>
     <title><%: Page.Title %> - My ASP.NET Application</title>
 
     <asp:PlaceHolder runat="server">
@@ -51,34 +59,36 @@
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <%--Site Scripts--%>
             </Scripts>
+
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark justify-content-between">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark justify-between fixed w-screen z-50">
             <div class="container">
                 <a class="navbar-brand" runat="server" href="~/">Potch Stream Hotel</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                <button type="button" onclick="toggleNav()" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Booking</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/lost-found.aspx">Lost&found</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Accomodation</a></li>
-
-                    </ul>
-                    <a class="text-white text-decoration-none nav-item btn btn-primary" runat="server" href="~/">Login</a>
-
-                </div>
             </div>
+            <div class="px-5 justify-between hidden sm:flex flex-col sm:flex-row" id="nav">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/lost-found.aspx">Lost&found</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Accomodation</a></li>
+
+                </ul>
+                <a class="text-white text-decoration-none nav-item btn btn-primary" runat="server" href="~/">Login</a>
+            </div>
+            
         </nav>
+
         
 
-        <div class="pt-0 w-100 h-100 ">
+        <div class="w-100 h-100 pt-16">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <footer class="mt-5 bg-black w-100 text-white-50" style="bottom: 0;left:0;">
+            <footer class="mt-5 p-3 bg-black w-full text-white-50">
                 <p>&copy; <%: DateTime.Now.Year %> - Potch Stream Hotel</p>
             </footer>
         </div>
@@ -86,5 +96,8 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+
 </body>
 </html>
