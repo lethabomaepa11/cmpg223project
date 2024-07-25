@@ -158,6 +158,11 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="gifs\200.webp" />
+    <Content Include="gifs\cincout.webp" />
+    <Content Include="gifs\lost.webp" />
+    <Content Include="gifs\lostf.webp" />
+    <Content Include="gifs\lostfound.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
