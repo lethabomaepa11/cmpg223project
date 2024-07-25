@@ -15,21 +15,49 @@
             <p>Confirmation of Information</p>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h3>Client Details</h3>
-                    <p>Strip club and dollar bills I still got more money Patron shots, can I get a refill? I still got more money</p>
-                    <p>Money on my mind Money, money on my mind Throw it, throw it up Watch it fall off from the sky</p>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Bookings Reservation</h3>
-                    <p>Strip club and dollar bills I still got more money Patron shots, can I get a refill? I still got more money</p>
-                    <p>Money on my mind Money, money on my mind Throw it, throw it up Watch it fall off from the sky</p>
-                </div>
-                <div class="col-sm-4">
-                    <h3>Payment Transaction</h3>
-                    <p>Strip club and dollar bills I still got more money Patron shots, can I get a refill? I still got more money</p>
-                    <p>Money on my mind Money, money on my mind Throw it, throw it up Watch it fall off from the sky</p>
+                <div class="row">
+                <div class="col-sm-12">
+                   <h3>Client Details</h3>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th scope="row">First Name</th>
+                                <td>Mark</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Last Name</th>
+                                <td>Otto</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Username</th>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>mark.otto@example.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Phone Number</th>
+                                <td>+27(78) 9745974</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Reservance code</th>
+                                <td>#23022</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Rooms Booked</th>
+                            <td>2</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Decription of room</th>
+                            <td>Luxury</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Number of people</th>
+                            <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
