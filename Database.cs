@@ -9,7 +9,7 @@ namespace cmpg223project
     
     public class Database
     {
-        public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\Documents\PotchStream.mdf;Integrated Security=True;Connect Timeout=30";
+        public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\Source\Repos\lethabomaepa11\cmpg223project\PotchStream.mdf;Integrated Security=True;Connect Timeout=30";
         SqlDataAdapter adapter;
         SqlConnection connection;
         SqlCommand command;
@@ -26,14 +26,15 @@ namespace cmpg223project
         }
         
         //Client CRUD methods
-        public void insertClients()
+        public void insertClients(Client client)
         {
-            //adding admin, remove this code 
+            //select all where email equal this email if not exists then insert
             sql = "INSERT INTO Clients(email,name,surname,cell_number,age,client_type) VALUES('admin@potchstream.com','Admin','Man','1234567890','31','a')";
-            command = new SqlCommand(sql,connection);
+            command = new SqlCommand(sql, connection);
             command.ExecuteNonQuery();
+
         }
-        public void updateClients()
+        public void updateClients(Client client, String where)
         {
 
         }

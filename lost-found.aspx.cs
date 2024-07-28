@@ -14,8 +14,8 @@ namespace cmpg223project
         {
             MultiView1.ActiveViewIndex = 0;
              db = new Database();
-            db.insertClients();
-            db.close();
+            //db.insertClients();
+            //db.close();
         }
 
         protected void btnCheckItems_Click(object sender, EventArgs e)
