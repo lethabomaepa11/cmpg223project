@@ -16,6 +16,7 @@ namespace cmpg223project
             DateTime date = DateTime.Today;
             Calendar1.SelectedDate = date;
             //int[] clients = { 5, 9 };
+            Database db = new Database();
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)

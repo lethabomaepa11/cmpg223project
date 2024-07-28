@@ -9,9 +9,13 @@ namespace cmpg223project
 {
     public partial class lost_found : System.Web.UI.Page
     {
+        Database db;
         protected void Page_Load(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 0;
+             db = new Database();
+            db.insertClients();
+            db.close();
         }
 
         protected void btnCheckItems_Click(object sender, EventArgs e)
