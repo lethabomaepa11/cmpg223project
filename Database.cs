@@ -205,7 +205,7 @@ namespace cmpg223project
             //bool r = true;
             try
             {
-                sql = "INSERT INTO ASSIGNED_ROOMS(reservation_code, room_id)Values('" + reservation_code + "', '" + roomID + "');";
+                sql = "INSERT INTO ASSIGNED_ROOMS(reservation_code, room_id) Values('" + reservation_code + "', '" + roomID + "');";
                 command = new SqlCommand(sql, connection);
                 command.ExecuteNonQuery();
                 return true;
