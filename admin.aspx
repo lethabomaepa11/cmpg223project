@@ -76,6 +76,7 @@
                                     <h1 class="font-bold">Lost and found items</h1>
                                     <asp:LinkButton runat="server" OnClick="LinkButton2_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
                                     <!--- Use GridView -->
+
                                 </div>
                             </section>
                             <section class="flex justify-between">

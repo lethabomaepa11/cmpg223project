@@ -122,10 +122,10 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Exterior\exterior 2.jpg" />
-    <Content Include="Exterior\exterior 3.jpg" />
-    <Content Include="Exterior\exterior of hotel.jpg" />
-    <Content Include="Exterior\home.mp4" />
+    <Content Include="Exterior\african-businessman_resized.jpg" />
+    <Content Include="Exterior\final version.mp4" />
+    <Content Include="Exterior\luxury-classic-modern-bedroom-suite-hotel-with-king-size-bed_resized.jpg" />
+    <Content Include="Exterior\luxury-classic-modern-bedroom-suite-hotel_resized.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="lost-found.aspx" />
