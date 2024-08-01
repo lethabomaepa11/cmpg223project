@@ -15,9 +15,9 @@ namespace cmpg223project
         SqlConnection connection;
         SqlCommand command;
         SqlDataReader reader;
-        DataTable clientData = new DataTable();
-        DataTable lostFoundData = new DataTable();
-        DataTable bookingData = new DataTable();
+        public DataTable clientData = new DataTable();
+        public DataTable lostFoundData = new DataTable();
+        public DataTable bookingData = new DataTable();
         private String sql = null;
         public Database()
         {
@@ -44,7 +44,7 @@ namespace cmpg223project
             {
                 if (!selectClients("Where email ='" + client.email + "'"))
                 {
-                    Console.WriteLine(client.email);
+                    //Console.WriteLine(client.email);
                     if (client.password is null)
                     {
                         //once-off user
@@ -246,6 +246,51 @@ namespace cmpg223project
             }
             return result;
         }
+        
+        public bool checkLostFound(string reservation_code)
+        {
+            sql = $"SELECT room_id FROM Assigned_Rooms WHERE reservation_code = '{reservation_code}';";
+            command = new SqlCommand(sql, connection);
+            object result = command.ExecuteScalar();
+            if (result != null)
+            {
+                checkOutDate = result.ToString();
+                sql = $"SELECT check_out FROM Bookings WHERE reservation_code = '{reservation_code}';";
+                command = new SqlCommand(sql, connection);
+                result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    DateTime date = Convert.ToDateTime(result.ToString());
+                    sql = $"SELECT * FROM LostFoundItems WHERE found_date = '{date.AddDays(1)}' AND description NOT LIKE '%claimed by%';";
+                    checkOutDate = sql;
+                    command = new SqlCommand(sql, connection);
+                    adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = command;
+                    adapter.SelectCommand.ExecuteNonQuery();
+                    adapter.Fill(lostFoundData);
+                    
+                    if(lostFoundData.Rows.Count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+            //DataTable roomID = new DataTable();
+            //adapter.Fill(roomID);
+            //
+            //adapter.SelectCommand = command;
+            //adapter.Fill(check_out);
+            //string check_out_date = check_out.ToString();
+
+            
+        }
+        public string checkOutDate;
 
     }
 
