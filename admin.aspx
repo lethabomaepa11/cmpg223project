@@ -28,69 +28,68 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="min-h-screen flex justify-between">
-            <aside class="hidden lg:flex flex-col min-h-screen w-1/5 bg-slate-950 text-white p-3 gap-5">
-                <header>
-                    <h1 class="text-2xl font-bold">PS<span class="text-yellow-300">Admin</span></h1>
-                </header>
-                <nav class="flex flex-col gap-1  p-3 rounded-lg">
-                    <asp:LinkButton ID="Home" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton1_Click"><i class="fa fa-chart-line"></i> Dashboard</asp:LinkButton>
-                    <asp:LinkButton ID="Lostfound" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton2_Click"><i class="fa fa-handshake"></i> Lost and Found</asp:LinkButton>
-                    <asp:LinkButton ID="transactions" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-database"></i> Transactions</asp:LinkButton>
-                    <asp:LinkButton ID="help" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-info-circle"></i> Help</asp:LinkButton>
-                </nav>
-                <asp:LinkButton runat="server" CssClass="rounded-md bg-red-600 p-2 fixed bottom-0 mb-5 transition-all hover:bg-red-400" ID="logout"><i class="fa fa-right-from-bracket"></i> Logout</asp:LinkButton>
+        <div class="min-h-screen flex justify-between bg-gray-900">
+            <aside class="hidden lg:flex flex-col min-h-screen w-fit  text-white p-3 gap-5">
+                <div class="flex flex-col bg-gray-800 rounded-md w-full p-5 gap-5 min-h-screen">
+                    <header>
+                        <h1 class="text-2xl font-bold">PS<span class="text-yellow-300">Admin</span></h1>
+                    </header>
+                    <nav class="flex flex-col gap-1  p-3 rounded-lg">
+                        <asp:LinkButton ID="Home" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton1_Click"><i class="fa fa-chart-line"></i> Dashboard</asp:LinkButton>
+                        <asp:LinkButton ID="Lostfound" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton2_Click"><i class="fa fa-handshake"></i> Lost and Found</asp:LinkButton>
+                        <asp:LinkButton ID="bookings" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-database"></i> Bookings</asp:LinkButton>
+                        <asp:LinkButton ID="help" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-info-circle"></i> Help</asp:LinkButton>
+                    </nav>
+                    <asp:LinkButton runat="server" OnClick="Logout" CssClass="rounded-md bg-red-600 p-2 absolute bottom-0 mb-5 transition-all hover:bg-red-400" ID="logout"><i class="fa fa-right-from-bracket"></i> Logout</asp:LinkButton>
+
+                </div>
             </aside>
-            <main class="min-h-screen w-full md:w-4/5 text-black bg-slate-200">
+            <main class="min-h-screen w-full md:w-4/5 text-black bg-gray-900 flex flex-col gap-2">
                 <asp:MultiView ID="MultiView1" runat="server">
                     <asp:View ID="View1" runat="server">
-                        <header class="bg-slate-200 w-full p-3">
-                            <h1 class="text-2xl font-bold">Dashboard</h1>
-                        </header>
+                        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+                          <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">DashBoard</span>
+                            </a>
+                          </div>
+                        </nav>
                         <main class="flex flex-col p-3 gap-3">
                             <div class="flex gap-2 flex-wrap text-white">
-                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2">
-                                    <h1 class="font-bold text-lg">100</h1>
+                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <asp:label runat="server" ID="lblNewBookings" class="font-bold text-lg">0</asp:label>
                                     <p class="text-gray-300">New Bookings</p>
                                 </div>
-                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2 hover:text-yellow-200">
-                                    <h1 class="font-bold text-lg">121</h1>
+                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <asp:label runat="server" ID="lblTotalBookings" class="font-bold text-lg">0</asp:label>
                                     <p class="text-gray-300">Total Bookings</p>
                                 </div>
-                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2 hover:text-yellow-200">
-                                    <h1 class="font-bold text-lg">98</h1>
-                                    <p class="text-gray-300">Currently Checked in</p>
+                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <asp:label runat="server" ID="lblnotRegistered" class="font-bold text-lg">0</asp:label>
+                                    <p class="text-gray-300">Unregistered clients</p>
                                 </div>
-                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2 hover:text-yellow-200">
-                                    <h1 class="font-bold text-lg">14</h1>
+                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <asp:label runat="server" ID="lblRegisteredClients" class="font-bold text-lg">0</asp:label>
                                     <p class="text-gray-300">Registered clients</p>
                                 </div>
                             </div>
                             <section class="flex gap-2">
-                                <div class="bg-white rounded-lg w-2/4 p-3  flex justify-between">
-                                    <h1 class="font-bold">Transactions</h1>
+                                <div class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
+                                    <h1 class="font-bold">New Bookings</h1>
                                     <asp:LinkButton runat="server" OnClick="LinkButton3_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
-                                    <!--- Use GridView -->
+                                    
                                 </div>
-                                <div class="bg-white rounded-lg w-2/4 p-3  flex justify-between">
-                                    <h1 class="font-bold">Lost and found items</h1>
+                                <div class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
+                                    <h1 class="font-bold">New Lost and found items</h1>
                                     <asp:LinkButton runat="server" OnClick="LinkButton2_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
-                                    <!--- Use GridView -->
+                                    
 
                                 </div>
                             </section>
-                            <section class="flex justify-between">
-
-                            
-                                <asp:Calendar CssClass="calendar w-2/5 bg-slate-300" ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
-                                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                                    <OtherMonthDayStyle ForeColor="#999999" />
-                                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                                    <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                                    <TodayDayStyle BackColor="#CCCCCC" />
-                                </asp:Calendar>
-                                <div class="bg-white w-4/6 rounded-lg p-3">
+                            <section class="flex justify-between">    
+                                <div id="datepicker-actions" datepicker datepicker-autoselect-today></div>
+                                <div class="text-white w-4/6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
                                     <h1>Charts Registered Clients VS Non-registered</h1>
                                     <asp:Chart ID="ClientsChart" runat="server">
                                         <Series>
@@ -105,16 +104,62 @@
                         </main>
                     </asp:View>
                     <asp:View ID="View2" runat="server">
-                        <header class="bg-slate-200 w-full p-3">
-                            <h1 class="text-2xl font-bold">Lost and found</h1>
+                        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+                          <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">LostFound</span>
+                            </a>
+                          </div>
+                        </nav>
                             <!--- Use GridView -->
-                        </header>
+                            <asp:Label runat="server" ID="lostFoundEmpty"></asp:Label>
+                            <asp:LinkButton runat="server" CssClass="text-white bg-blue-500 p-2 rounded-md w-fit"><i class="fa fa-add"></i> Add New</asp:LinkButton>
+                            <asp:GridView ID="gridLostFound" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="0px" CellPadding="8" GridLines="Horizontal" OnSelectedIndexChanged="gridLostFound_SelectedIndexChanged" ForeColor="Black">
+                                <Columns>
+                                    <asp:CommandField  ShowDeleteButton="true" ButtonType="Button" ControlStyle-CssClass="rounded p-2 bg-red-500 text-white">
+                                    <ControlStyle CssClass="rounded p-2 bg-red-500 text-white" />
+                                    </asp:CommandField>
+                                    <asp:CommandField ShowEditButton="true" ButtonType="Button" ControlStyle-CssClass="rounded p-2 px-4 bg-blue-500 text-white">
+   
+                                    <ControlStyle CssClass="rounded p-2 px-4 bg-blue-500 text-white" />
+                                    </asp:CommandField>
+   
+                                </Columns>
+                                <RowStyle ForeColor="white" BackColor="#1f2937" />
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="#374151" Font-Bold="True" ForeColor="#9ca3af" />
+                                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
                     </asp:View>
                     <asp:View ID="View3" runat="server">
-                        <header class="bg-slate-200 w-full p-3">
-                            <h1 class="text-2xl font-bold">Transactions</h1>
+                        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+                          <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bookings</span>
+                            </a>
+                          </div>
+                        </nav>
                            <!--- Use GridView -->
-                        </header>
+                            <asp:Label runat="server" ID="bookingsEmpty"></asp:Label>
+                            <asp:GridView ID="gridBookings" runat="server" BackColor="White" BorderColor="#CCCCCC" Rad BorderWidth="0px" CellPadding="8" GridLines="Horizontal" ForeColor="Black">
+                                 <RowStyle ForeColor="white" BackColor="#1f2937" />
+                                     <FooterStyle BackColor="#CCCCCC" />
+                                     <HeaderStyle BackColor="#374151" Font-Bold="True" ForeColor="#9ca3af"  />
+                                     <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                     <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                     <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                     <SortedAscendingHeaderStyle BackColor="#808080" />
+                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                     <SortedDescendingHeaderStyle BackColor="#383838" />
+                            </asp:GridView>
+
                     </asp:View>
                 </asp:MultiView>
             </main>

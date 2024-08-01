@@ -42,13 +42,13 @@ namespace cmpg223project
         protected global::System.Web.UI.WebControls.LinkButton Lostfound;
 
         /// <summary>
-        /// transactions control.
+        /// bookings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton transactions;
+        protected global::System.Web.UI.WebControls.LinkButton bookings;
 
         /// <summary>
         /// help control.
@@ -87,13 +87,40 @@ namespace cmpg223project
         protected global::System.Web.UI.WebControls.View View1;
 
         /// <summary>
-        /// Calendar1 control.
+        /// lblNewBookings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.Label lblNewBookings;
+
+        /// <summary>
+        /// lblTotalBookings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalBookings;
+
+        /// <summary>
+        /// lblnotRegistered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblnotRegistered;
+
+        /// <summary>
+        /// lblRegisteredClients control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegisteredClients;
 
         /// <summary>
         /// ClientsChart control.
@@ -114,6 +141,24 @@ namespace cmpg223project
         protected global::System.Web.UI.WebControls.View View2;
 
         /// <summary>
+        /// lostFoundEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lostFoundEmpty;
+
+        /// <summary>
+        /// gridLostFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridLostFound;
+
+        /// <summary>
         /// View3 control.
         /// </summary>
         /// <remarks>
@@ -121,5 +166,23 @@ namespace cmpg223project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View View3;
+
+        /// <summary>
+        /// bookingsEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label bookingsEmpty;
+
+        /// <summary>
+        /// gridBookings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridBookings;
     }
 }
