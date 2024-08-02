@@ -11,7 +11,6 @@ namespace cmpg223project
     public partial class admin : System.Web.UI.Page
     {
         Database db = new Database();
-        int newBookings, totalBookings, notRegisteredClients, registeredClients;
         protected void Page_Load(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 0;

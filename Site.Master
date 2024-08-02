@@ -64,21 +64,28 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark justify-between fixed w-screen z-50">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Potch Stream Hotel</a>
+
+               
+                  <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                      <img src="Exterior/k.png" class="h-8" alt="Logo" />
+                      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Potch Stream Hotel</span>
+                  </a>
+ 
                 <button type="button" onclick="toggleNav()" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="px-5 justify-between hidden sm:flex flex-col sm:flex-row" id="nav">
+            <div class="px-5 justify-between items-center hidden sm:flex flex-col sm:flex-row" id="nav">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/booking">Booking</a></li>
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/lost-found.aspx">Lost&found</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Accomodation</a></li>
 
                 </ul>
-                <a class="text-white text-decoration-none nav-item btn btn-primary" runat="server" href="~/">Login</a>
+                <asp:LinkButton ID="btnToLogin" class="flex items-center text-white text-decoration-none nav-item btn btn-primary" runat="server" href="/login"><i class="fa fa-right-to-bracket"></i> Login </asp:LinkButton>
+                <asp:LinkButton ID="btnToProfile" class="flex gap-2 items-center text-white text-decoration-none p-2 nav-item btn  px-4 py-1 transition-all btn-primary" runat="server" href="/profile"><i class="fa fa-user text-xl"></i> Profile</asp:LinkButton>
+
             </div>
             
         </nav>

@@ -49,8 +49,8 @@
                     <asp:View ID="View1" runat="server">
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                            <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
+                                <img src="Exterior/k.png" class="h-10" alt="Flowbite Logo" />
                                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">DashBoard</span>
                             </a>
                           </div>
@@ -106,8 +106,8 @@
                     <asp:View ID="View2" runat="server">
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                            <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
+                                <img src="Exterior/k.png" class="h-8" alt="Flowbite Logo" />
                                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">LostFound</span>
                             </a>
                           </div>
@@ -121,8 +121,7 @@
                                     <ControlStyle CssClass="rounded p-2 bg-red-500 text-white" />
                                     </asp:CommandField>
                                     <asp:CommandField ShowEditButton="true" ButtonType="Button" ControlStyle-CssClass="rounded p-2 px-4 bg-blue-500 text-white">
-   
-                                    <ControlStyle CssClass="rounded p-2 px-4 bg-blue-500 text-white" />
+                                    <ControlStyle CssClass="rounded-md p-2 px-4 bg-blue-500 text-white" />
                                     </asp:CommandField>
    
                                 </Columns>
@@ -140,8 +139,8 @@
                     <asp:View ID="View3" runat="server">
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                            <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
+                                <img src="Exterior/k.png" class="h-8" alt="Flowbite Logo" />
                                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bookings</span>
                             </a>
                           </div>

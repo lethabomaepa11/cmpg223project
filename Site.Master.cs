@@ -11,7 +11,21 @@ namespace cmpg223project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["session_id"] != null)
+            {
+                if (Session["session_id"] == "ad1010")
+                {
+                    Response.Redirect("/admin");
+                }
+                else
+                {
+                    btnToLogin.Enabled = false;
+                }
+            }
+            else
+            {
+                btnToProfile.Enabled = false;
+            }
         }
     }
 }
