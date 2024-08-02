@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Booking.aspx.cs" Inherits="cmpg223project.Booking1" %>
 
-<%@ Page Language="C#" AutoEventWireup="true" inherits="cmpg223project.Booking1" CodeBehind="Bookings.aspx.cs"%>
 
 <!DOCTYPE html>
 
@@ -168,8 +167,7 @@
             <input type="date" id="txtCheckOut" runat="server" required />
 
             <label for="ddlAdults">Number of Adults:</label>
-            <label for="ddlChildren">Number of Children:</label>
-                <asp:DropDownList ID="DropDownList3" runat="server">
+            <asp:DropDownList ID="DropDownList3" runat="server">
                 <asp:ListItem Text="1" Value="1"></asp:ListItem>
                 <asp:ListItem Text="2" Value="2"></asp:ListItem>
                 <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -183,7 +181,6 @@
                 <asp:ListItem Text="2" Value="2"></asp:ListItem>
                 <asp:ListItem Text="3" Value="3"></asp:ListItem>
             </asp:DropDownList>
-
             <label for="ddlRoomType">Room Type:</label>
             <asp:DropDownList ID="DropDownList1" runat="server">
                 <asp:ListItem Text="Standard" Value="Standard">Standard - Spacious room with basic amenities.</asp:ListItem>
@@ -199,7 +196,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Confirm Booking Details</h2>
-            </div>
+            </div> 
             <div class="modal-body">
                 <p><strong>Name:</strong> <span id="confirmName"></span></p>
                 <p><strong>Surname:</strong> <span id="confirmSurname"></span></p>
@@ -220,6 +217,5 @@
     </form>
 
 
-   </form>
 </body>
 </html>
