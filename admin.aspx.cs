@@ -16,27 +16,7 @@ namespace cmpg223project
             DateTime date = DateTime.Today;
             Calendar1.SelectedDate = date;
             //int[] clients = { 5, 9 };
-            //check session id if its admin
-            Session["session_id"] = "a1010";
-            if (Session["session_id"]  == null || Session["session_id"] != "a1010")
-            {
-                Response.Redirect("/");
-            }
-
-            //total bookings
-            if (db.selectClients("WHERE client_type='b'"))
-                lblRegisteredClients.Text = "" + db.clientData.Rows.Count;
-            if(db.selectClients("WHERE client_type='c'"))
-                lblnotRegistered.Text = ""+db.clientData.Rows.Count;
-            if(db.selectBookings())
-                lblTotalBookings.Text = ""+db.bookingData.Rows.Count;
-            if (db.selectBookings())
-                gridBookings.DataSource = db.bookingData; gridBookings.DataBind();
-            if(db.selectLostFound())
-                gridLostFound.DataSource = db.lostFoundData;gridLostFound.DataBind();
-            //lblNewBookings.Text = date.ToString();
-
-            
+            Database db = new Database();
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
