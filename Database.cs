@@ -254,14 +254,14 @@ namespace cmpg223project
             object result = command.ExecuteScalar();
             if (result != null)
             {
-                checkOutDate = result.ToString();
+                String room_id = result.ToString();//can be multiple id's
                 sql = $"SELECT check_out FROM Bookings WHERE reservation_code = '{reservation_code}';";
                 command = new SqlCommand(sql, connection);
                 result = command.ExecuteScalar();
                 if (result != null)
                 {
                     DateTime date = Convert.ToDateTime(result.ToString());
-                    sql = $"SELECT * FROM LostFoundItems WHERE found_date = '{date.AddDays(1)}' AND description NOT LIKE '%claimed by%';";
+                    sql = $"SELECT * FROM LostFoundItems WHERE found_date = '{date.AddDays(1)}' AND room_id = '{room_id}' AND description NOT LIKE '%claimed by%';";
                     checkOutDate = sql;
                     command = new SqlCommand(sql, connection);
                     adapter = new SqlDataAdapter();

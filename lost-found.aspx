@@ -38,17 +38,16 @@
                     <h3>Your Items</h3>
                     <p><asp:Label runat="server" ID="lblNumItems"></asp:Label>items were found linked to reservation code: <asp:Label CssClass="fw-bold" ID="Label2" runat="server" Text="Label"></asp:Label></p>
                     <div class="h-100 overflow-auto">
-                        <asp:GridView ID="gridLostFound" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
-                                <AlternatingRowStyle BackColor="#F7F7F7" />
-                                <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                                <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                                <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                                <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                                <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                        <asp:GridView ID="gridLostFound" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="0px" CellPadding="3" GridLines="Horizontal">
+                                <RowStyle ForeColor="white" BackColor="#1f2937" />
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="#374151" Font-Bold="True" ForeColor="#9ca3af" />
+                                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
                             </asp:GridView>
                     </div>
                 </div>

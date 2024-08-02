@@ -28,18 +28,21 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="min-h-screen flex justify-between bg-gray-950">
+        <div class="min-h-screen flex justify-between bg-gray-900">
             <aside class="hidden lg:flex flex-col min-h-screen w-fit  text-white p-3 gap-5">
-                <header>
-                    <h1 class="text-2xl font-bold">PS<span class="text-yellow-300">Admin</span></h1>
-                </header>
-                <nav class="flex flex-col gap-1  p-3 rounded-lg">
-                    <asp:LinkButton ID="Home" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton1_Click"><i class="fa fa-chart-line"></i> Dashboard</asp:LinkButton>
-                    <asp:LinkButton ID="Lostfound" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton2_Click"><i class="fa fa-handshake"></i> Lost and Found</asp:LinkButton>
-                    <asp:LinkButton ID="bookings" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-database"></i> Bookings</asp:LinkButton>
-                    <asp:LinkButton ID="help" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-info-circle"></i> Help</asp:LinkButton>
-                </nav>
-                <asp:LinkButton runat="server" OnClick="Logout" CssClass="rounded-md bg-red-600 p-2 fixed bottom-0 mb-5 transition-all hover:bg-red-400" ID="logout"><i class="fa fa-right-from-bracket"></i> Logout</asp:LinkButton>
+                <div class="flex flex-col bg-gray-800 rounded-md w-full p-5 gap-5 min-h-screen">
+                    <header>
+                        <h1 class="text-2xl font-bold">PS<span class="text-yellow-300">Admin</span></h1>
+                    </header>
+                    <nav class="flex flex-col gap-1  p-3 rounded-lg">
+                        <asp:LinkButton ID="Home" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton1_Click"><i class="fa fa-chart-line"></i> Dashboard</asp:LinkButton>
+                        <asp:LinkButton ID="Lostfound" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton2_Click"><i class="fa fa-handshake"></i> Lost and Found</asp:LinkButton>
+                        <asp:LinkButton ID="bookings" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-database"></i> Bookings</asp:LinkButton>
+                        <asp:LinkButton ID="help" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-info-circle"></i> Help</asp:LinkButton>
+                    </nav>
+                    <asp:LinkButton runat="server" OnClick="Logout" CssClass="rounded-md bg-red-600 p-2 absolute bottom-0 mb-5 transition-all hover:bg-red-400" ID="logout"><i class="fa fa-right-from-bracket"></i> Logout</asp:LinkButton>
+
+                </div>
             </aside>
             <main class="min-h-screen w-full md:w-4/5 text-black bg-gray-900 flex flex-col gap-2">
                 <asp:MultiView ID="MultiView1" runat="server">
@@ -111,17 +114,27 @@
                         </nav>
                             <!--- Use GridView -->
                             <asp:Label runat="server" ID="lostFoundEmpty"></asp:Label>
-                            <asp:GridView ID="gridLostFound" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" OnSelectedIndexChanged="gridLostFound_SelectedIndexChanged">
-                                <AlternatingRowStyle BackColor="#F7F7F7" />
-                                <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                                <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                                <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                                <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                                <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                            <asp:LinkButton runat="server" CssClass="text-white bg-blue-500 p-2 rounded-md w-fit"><i class="fa fa-add"></i> Add New</asp:LinkButton>
+                            <asp:GridView ID="gridLostFound" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="0px" CellPadding="8" GridLines="Horizontal" OnSelectedIndexChanged="gridLostFound_SelectedIndexChanged" ForeColor="Black">
+                                <Columns>
+                                    <asp:CommandField  ShowDeleteButton="true" ButtonType="Button" ControlStyle-CssClass="rounded p-2 bg-red-500 text-white">
+                                    <ControlStyle CssClass="rounded p-2 bg-red-500 text-white" />
+                                    </asp:CommandField>
+                                    <asp:CommandField ShowEditButton="true" ButtonType="Button" ControlStyle-CssClass="rounded p-2 px-4 bg-blue-500 text-white">
+   
+                                    <ControlStyle CssClass="rounded p-2 px-4 bg-blue-500 text-white" />
+                                    </asp:CommandField>
+   
+                                </Columns>
+                                <RowStyle ForeColor="white" BackColor="#1f2937" />
+                                <FooterStyle BackColor="#CCCCCC" />
+                                <HeaderStyle BackColor="#374151" Font-Bold="True" ForeColor="#9ca3af" />
+                                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#808080" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#383838" />
                             </asp:GridView>
                     </asp:View>
                     <asp:View ID="View3" runat="server">
@@ -135,17 +148,16 @@
                         </nav>
                            <!--- Use GridView -->
                             <asp:Label runat="server" ID="bookingsEmpty"></asp:Label>
-                            <asp:GridView ID="gridBookings" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
-                                <AlternatingRowStyle BackColor="#F7F7F7" />
-                                <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                                <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                                <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                                <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                                <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                            <asp:GridView ID="gridBookings" runat="server" BackColor="White" BorderColor="#CCCCCC" Rad BorderWidth="0px" CellPadding="8" GridLines="Horizontal" ForeColor="Black">
+                                 <RowStyle ForeColor="white" BackColor="#1f2937" />
+                                     <FooterStyle BackColor="#CCCCCC" />
+                                     <HeaderStyle BackColor="#374151" Font-Bold="True" ForeColor="#9ca3af"  />
+                                     <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                     <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                     <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                     <SortedAscendingHeaderStyle BackColor="#808080" />
+                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                     <SortedDescendingHeaderStyle BackColor="#383838" />
                             </asp:GridView>
 
                     </asp:View>

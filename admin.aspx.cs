@@ -36,7 +36,7 @@ namespace cmpg223project
                 gridBookings.DataSource = db.bookingData; gridBookings.DataBind();
             if(db.selectLostFound())
                 gridLostFound.DataSource = db.lostFoundData;gridLostFound.DataBind();
-            lblNewBookings.Text = date.ToString();
+            //lblNewBookings.Text = date.ToString();
 
             
         }
