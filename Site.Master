@@ -80,11 +80,8 @@
                 </ul>
                 <a class="text-white text-decoration-none nav-item btn btn-primary" runat="server" href="~/">Login</a>
             </div>
-            
         </nav>
-
-        
-
+       
         <div class="w-100 h-100 pt-16">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
