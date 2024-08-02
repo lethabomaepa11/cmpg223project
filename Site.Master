@@ -61,37 +61,14 @@
                 <!-- Add more buttons for other dates as needed -->
                 <button type="button" onclick="hideCalendar('txtCheckOut_calendar')">Close</button><br />
             </div>
-            <br /><br />
-
-            <label>Number of Adults:</label>
-            <asp:DropDownList ID="ddlAdults" runat="server">
-                <asp:ListItem Value="1">1</asp:ListItem>
-                <asp:ListItem Value="2">2</asp:ListItem>
-                <asp:ListItem Value="3">3</asp:ListItem>
-                <!-- Add more options as needed -->
-            </asp:DropDownList>
-
-            <label>Number of Children:</label>
-            <asp:DropDownList ID="ddlChildren" runat="server">
-                <asp:ListItem Value="0">0</asp:ListItem>
-                <asp:ListItem Value="1">1</asp:ListItem>
-                <asp:ListItem Value="2">2</asp:ListItem>
-                <!-- Add more options as needed -->
-            </asp:DropDownList>
-
-            <label>Room Type:</label>
-            <asp:DropDownList ID="ddlRoomType" runat="server">
-                <asp:ListItem Value="1">Standard</asp:ListItem>
-                <asp:ListItem Value="2">Deluxe</asp:ListItem>
-                <asp:ListItem Value="3">Suite</asp:ListItem>
-                <!-- Add more room types as needed -->
-            </asp:DropDownList>
-
-            <br /><br />
-
-            <asp:Button ID="btnNext" runat="server" Text="Next" OnClientClick="return validateAndProceed();" />
-            <br />
-            <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
+        </nav>
+       
+        <div class="w-100 h-100 pt-16">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer class="mt-5 p-3 bg-black w-full text-white-50">
+                <p>&copy; <%: DateTime.Now.Year %> - Potch Stream Hotel</p>
+            </footer>
         </div>
     </form>
 
