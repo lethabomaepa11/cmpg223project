@@ -18,8 +18,8 @@ namespace cmpg223project
             //Calendar1.SelectedDate = date;
             //int[] clients = { 5, 9 };
             //check session id if its admin
-            Session["session_id"] = "a1010";
-            if (Session["session_id"]  == null || Session["session_id"] != "a1010")
+            Session["session_id"] = "ad1010";
+            if (Session["session_id"]  == null || Session["session_id"] != "ad1010")
             {
                 Response.Redirect("/");
             }
