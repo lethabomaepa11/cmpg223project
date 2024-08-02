@@ -2,102 +2,114 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="icons/css/all.min.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"/>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
-    <style>
-        *{
-            font-family: Open Sans, sans-serif;
-        }
-        h1,h2,h3,h4,h5,h6{
-            font-family: Poppins, sans-serif;
-            font-weight: 500;
-            font-size: 2rem;
-        }
-    </style>
+    <title>Hotel Room Booking</title>
     <script>
-        const toggleNav = () => {
-            const nav = document.getElementById("nav");
-            nav.style.display === "none" ? nav.style.display = "flex" : nav.style.display = "none";
+        function showCalendar(id) {
+            var calendar = document.getElementById(id);
+            calendar.style.display = 'block';
+        }
+
+        function hideCalendar(id) {
+            var calendar = document.getElementById(id);
+            calendar.style.display = 'none';
+        }
+
+        function selectDate(id, date) {
+            document.getElementById(id).value = date;
+            hideCalendar(id + '_calendar');
         }
     </script>
-    <title><%: Page.Title %> - My ASP.NET Application</title>
-
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
-
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
 </head>
 <body>
-    <form runat="server" class="h-100 w-100 p-0 m-0">
-        <asp:ScriptManager runat="server">
-            <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
-            </Scripts>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Hotel Room Booking</h2>
+            <label>Do you have an account?</label>
+            <br />
+            <input type="radio" id="rdoYes" name="accountChoice" onclick="document.getElementById('divGuestInfo').style.display = 'none';" checked />
+            <label for="rdoYes">Yes</label>
+            <input type="radio" id="rdoNo" name="accountChoice" onclick="document.getElementById('divGuestInfo').style.display = 'block';" />
+            <label for="rdoNo">No</label>
+            <br /><br />
 
-        </asp:ScriptManager>
-
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark justify-between fixed w-screen z-50">
-            <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Potch Stream Hotel</a>
-                <button type="button" onclick="toggleNav()" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div id="divGuestInfo" style="display:none;">
+                <label>Name:</label>
+                <asp:TextBox ID="txtName" runat="server" />
+                <br />
+                <label>Email:</label>
+                <asp:TextBox ID="txtEmail" runat="server" />
+                <br /><br />
             </div>
-            <div class="px-5 justify-between hidden sm:flex flex-col sm:flex-row" id="nav">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/lost-found.aspx">Lost&found</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/">Accomodation</a></li>
 
-                </ul>
-                <a class="text-white text-decoration-none nav-item btn btn-primary" runat="server" href="~/">Login</a>
+            <label>Check-in Date:</label>
+            <asp:TextBox ID="txtCheckIn" runat="server" OnClientClick="showCalendar('txtCheckIn_calendar')" ReadOnly="true" />
+            <div id="txtCheckIn_calendar" style="display:none;">
+                <button type="button" onclick="selectDate('txtCheckIn', '2024-08-10')">2024-08-10</button><br />
+                <button type="button" onclick="selectDate('txtCheckIn', '2024-08-11')">2024-08-11</button><br />
+                <!-- Add more buttons for other dates as needed -->
+                <button type="button" onclick="hideCalendar('txtCheckIn_calendar')">Close</button><br />
             </div>
-            
-        </nav>
+            <br />
 
-        
+            <label>Check-out Date:</label>
+            <asp:TextBox ID="txtCheckOut" runat="server" OnClientClick="showCalendar('txtCheckOut_calendar')" ReadOnly="true" />
+            <div id="txtCheckOut_calendar" style="display:none;">
+                <button type="button" onclick="selectDate('txtCheckOut', '2024-08-12')">2024-08-12</button><br />
+                <button type="button" onclick="selectDate('txtCheckOut', '2024-08-13')">2024-08-13</button><br />
+                <!-- Add more buttons for other dates as needed -->
+                <button type="button" onclick="hideCalendar('txtCheckOut_calendar')">Close</button><br />
+            </div>
+            <br /><br />
 
-        <div class="w-100 h-100 pt-16">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <footer class="mt-5 p-3 bg-black w-full text-white-50">
-                <p>&copy; <%: DateTime.Now.Year %> - Potch Stream Hotel</p>
-            </footer>
+            <label>Number of Adults:</label>
+            <asp:DropDownList ID="ddlAdults" runat="server">
+                <asp:ListItem Value="1">1</asp:ListItem>
+                <asp:ListItem Value="2">2</asp:ListItem>
+                <asp:ListItem Value="3">3</asp:ListItem>
+                <!-- Add more options as needed -->
+            </asp:DropDownList>
+
+            <label>Number of Children:</label>
+            <asp:DropDownList ID="ddlChildren" runat="server">
+                <asp:ListItem Value="0">0</asp:ListItem>
+                <asp:ListItem Value="1">1</asp:ListItem>
+                <asp:ListItem Value="2">2</asp:ListItem>
+                <!-- Add more options as needed -->
+            </asp:DropDownList>
+
+            <label>Room Type:</label>
+            <asp:DropDownList ID="ddlRoomType" runat="server">
+                <asp:ListItem Value="1">Standard</asp:ListItem>
+                <asp:ListItem Value="2">Deluxe</asp:ListItem>
+                <asp:ListItem Value="3">Suite</asp:ListItem>
+                <!-- Add more room types as needed -->
+            </asp:DropDownList>
+
+            <br /><br />
+
+            <asp:Button ID="btnNext" runat="server" Text="Next" OnClientClick="return validateAndProceed();" />
+            <br />
+            <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
         </div>
     </form>
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
-    </asp:PlaceHolder>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 
+    <script>
+        function validateAndProceed() {
+            var name = document.getElementById('<%= txtName.ClientID %>').value;
+            var email = document.getElementById('<%= txtEmail.ClientID %>').value;
+
+            // If 'No' account and Name or Email is blank, show error message
+            if (!document.getElementById('rdoYes').checked && (name.trim() === '' || email.trim() === '')) {
+                document.getElementById('<%= lblMessage.ClientID %>').innerText = "Please enter your name and email.";
+                return false; // Prevent form submission
+            }
+
+            // Optional: Validate other fields if needed
+
+            return true; // Allow form submission
+        }
+    </script>
 </body>
 </html>
