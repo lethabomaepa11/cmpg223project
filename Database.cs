@@ -15,9 +15,9 @@ namespace cmpg223project
         SqlConnection connection;
         SqlCommand command;
         SqlDataReader reader;
-        public DataTable clientData = new DataTable();
-        public DataTable lostFoundData = new DataTable();
-        public DataTable bookingData = new DataTable();
+        DataTable clientData = new DataTable();
+        DataTable lostFoundData = new DataTable();
+        DataTable bookingData = new DataTable();
         private String sql = null;
         public Database()
         {
@@ -44,7 +44,7 @@ namespace cmpg223project
             {
                 if (!selectClients("Where email ='" + client.email + "'"))
                 {
-                    //Console.WriteLine(client.email);
+                    Console.WriteLine(client.email);
                     if (client.password is null)
                     {
                         //once-off user

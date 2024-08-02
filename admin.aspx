@@ -41,52 +41,56 @@
                 </nav>
                 <asp:LinkButton runat="server" CssClass="rounded-md bg-red-600 p-2 fixed bottom-0 mb-5 transition-all hover:bg-red-400" ID="logout"><i class="fa fa-right-from-bracket"></i> Logout</asp:LinkButton>
             </aside>
-            <main class="min-h-screen w-full md:w-4/5 text-black bg-gray-900 flex flex-col gap-2">
+            <main class="min-h-screen w-full md:w-4/5 text-black bg-slate-200">
                 <asp:MultiView ID="MultiView1" runat="server">
                     <asp:View ID="View1" runat="server">
-                        <nav class="bg-white border-gray-200 dark:bg-gray-900">
-                          <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">DashBoard</span>
-                            </a>
-                          </div>
-                        </nav>
+                        <header class="bg-slate-200 w-full p-3">
+                            <h1 class="text-2xl font-bold">Dashboard</h1>
+                        </header>
                         <main class="flex flex-col p-3 gap-3">
                             <div class="flex gap-2 flex-wrap text-white">
-                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
-                                    <asp:label runat="server" ID="lblNewBookings" class="font-bold text-lg">0</asp:label>
+                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <h1 class="font-bold text-lg">100</h1>
                                     <p class="text-gray-300">New Bookings</p>
                                 </div>
-                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
-                                    <asp:label runat="server" ID="lblTotalBookings" class="font-bold text-lg">0</asp:label>
+                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2 hover:text-yellow-200">
+                                    <h1 class="font-bold text-lg">121</h1>
                                     <p class="text-gray-300">Total Bookings</p>
                                 </div>
-                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
-                                    <asp:label runat="server" ID="lblnotRegistered" class="font-bold text-lg">0</asp:label>
-                                    <p class="text-gray-300">Unregistered clients</p>
+                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2 hover:text-yellow-200">
+                                    <h1 class="font-bold text-lg">98</h1>
+                                    <p class="text-gray-300">Currently Checked in</p>
                                 </div>
-                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
-                                    <asp:label runat="server" ID="lblRegisteredClients" class="font-bold text-lg">0</asp:label>
+                                <div class="bg-gradient-to-b from-slate-900 to-slate-600 rounded-lg p-4 transition-all hover:-translate-y-2 hover:text-yellow-200">
+                                    <h1 class="font-bold text-lg">14</h1>
                                     <p class="text-gray-300">Registered clients</p>
                                 </div>
                             </div>
                             <section class="flex gap-2">
-                                <div class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
-                                    <h1 class="font-bold">New Bookings</h1>
+                                <div class="bg-white rounded-lg w-2/4 p-3  flex justify-between">
+                                    <h1 class="font-bold">Transactions</h1>
                                     <asp:LinkButton runat="server" OnClick="LinkButton3_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
-                                    
+                                    <!--- Use GridView -->
                                 </div>
-                                <div class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
-                                    <h1 class="font-bold">New Lost and found items</h1>
+                                <div class="bg-white rounded-lg w-2/4 p-3  flex justify-between">
+                                    <h1 class="font-bold">Lost and found items</h1>
                                     <asp:LinkButton runat="server" OnClick="LinkButton2_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
-                                    
+                                    <!--- Use GridView -->
 
                                 </div>
                             </section>
-                            <section class="flex justify-between">    
-                                <div id="datepicker-actions" datepicker datepicker-autoselect-today></div>
-                                <div class="text-white w-4/6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
+                            <section class="flex justify-between">
+
+                            
+                                <asp:Calendar CssClass="calendar w-2/5 bg-slate-300" ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                                    <OtherMonthDayStyle ForeColor="#999999" />
+                                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                                    <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                                    <TodayDayStyle BackColor="#CCCCCC" />
+                                </asp:Calendar>
+                                <div class="bg-white w-4/6 rounded-lg p-3">
                                     <h1>Charts Registered Clients VS Non-registered</h1>
                                     <asp:Chart ID="ClientsChart" runat="server">
                                         <Series>
@@ -101,26 +105,14 @@
                         </main>
                     </asp:View>
                     <asp:View ID="View2" runat="server">
-                        <nav class="bg-white border-gray-200 dark:bg-gray-900">
-                          <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">LostFound</span>
-                            </a>
-                          </div>
-                        </nav>
+                        <header class="bg-slate-200 w-full p-3">
+                            <h1 class="text-2xl font-bold">Lost and found</h1>
                             <!--- Use GridView -->
                         </header>
                     </asp:View>
                     <asp:View ID="View3" runat="server">
-                        <nav class="bg-white border-gray-200 dark:bg-gray-900">
-                          <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bookings</span>
-                            </a>
-                          </div>
-                        </nav>
+                        <header class="bg-slate-200 w-full p-3">
+                            <h1 class="text-2xl font-bold">Transactions</h1>
                            <!--- Use GridView -->
                         </header>
                     </asp:View>

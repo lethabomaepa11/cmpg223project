@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="lost-found.aspx.cs" Inherits="cmpg223project.lost_found" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:label runat="server" ID="lblTest" class="text-2xl font-bold">Lost and Found Claims</asp:label>
+    <h1>Lost and Found</h1>
     
     <main class="flex flex-col justify-center items-center">
         
