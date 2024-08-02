@@ -25,22 +25,6 @@ namespace cmpg223project
                 Response.Redirect("/");
             }
 
-            //total bookings
-            if (db.selectClients("WHERE client_type='b'"))
-                lblRegisteredClients.Text = "" + db.clientData.Rows.Count;
-            if(db.selectClients("WHERE client_type='c'"))
-                lblnotRegistered.Text = ""+db.clientData.Rows.Count;
-            if(db.selectBookings())
-                lblTotalBookings.Text = ""+db.bookingData.Rows.Count;
-            if (db.selectBookings())
-                gridBookings.DataSource = db.bookingData; gridBookings.DataBind();
-            if(db.selectLostFound())
-                gridLostFound.DataSource = db.lostFoundData;gridLostFound.DataBind();
-            //lblNewBookings.Text = date.ToString();
-
-            
-        }
-
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 0;//dashboard

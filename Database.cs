@@ -246,51 +246,6 @@ namespace cmpg223project
             }
             return result;
         }
-        
-        public bool checkLostFound(string reservation_code)
-        {
-            sql = $"SELECT room_id FROM Assigned_Rooms WHERE reservation_code = '{reservation_code}';";
-            command = new SqlCommand(sql, connection);
-            object result = command.ExecuteScalar();
-            if (result != null)
-            {
-                String room_id = result.ToString();//can be multiple id's
-                sql = $"SELECT check_out FROM Bookings WHERE reservation_code = '{reservation_code}';";
-                command = new SqlCommand(sql, connection);
-                result = command.ExecuteScalar();
-                if (result != null)
-                {
-                    DateTime date = Convert.ToDateTime(result.ToString());
-                    sql = $"SELECT * FROM LostFoundItems WHERE found_date = '{date.AddDays(1)}' AND room_id = '{room_id}' AND description NOT LIKE '%claimed by%';";
-                    checkOutDate = sql;
-                    command = new SqlCommand(sql, connection);
-                    adapter = new SqlDataAdapter();
-                    adapter.SelectCommand = command;
-                    adapter.SelectCommand.ExecuteNonQuery();
-                    adapter.Fill(lostFoundData);
-                    
-                    if(lostFoundData.Rows.Count > 0)
-                    {
-                        return true;
-                    }
-                    else
-                        return false;
-                }
-                else
-                    return false;
-            }
-            else
-                return false;
-            //DataTable roomID = new DataTable();
-            //adapter.Fill(roomID);
-            //
-            //adapter.SelectCommand = command;
-            //adapter.Fill(check_out);
-            //string check_out_date = check_out.ToString();
-
-            
-        }
-        public string checkOutDate;
 
     }
 
