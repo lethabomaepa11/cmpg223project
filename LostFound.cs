@@ -9,13 +9,13 @@ namespace cmpg223project
     {
         //public int item_id;
         public string description;
-        public string found_date;//discuss data type
+        public DateTime found_date;//discuss data type
         public int room_id;
         Database db = new Database();
         public LostFound() {
             //this.item_id = db.generateRandom(10);
         }
-        public LostFound(string description, string found_date, int room_id)
+        public LostFound(string description, DateTime found_date, int room_id)
         {
             //this.item_id = ite;
             this.description = description;

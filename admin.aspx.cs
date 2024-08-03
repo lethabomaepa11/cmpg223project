@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
@@ -11,10 +12,14 @@ namespace cmpg223project
     public partial class admin : System.Web.UI.Page
     {
         Database db = new Database();
+        bool isInLostFound = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             MultiView1.ActiveViewIndex = 0;
+
             DateTime date = DateTime.Today;
+            //toast.Enabled = false;
             //Calendar1.SelectedDate = date;
             //int[] clients = { 5, 9 };
             //check session id if its admin
@@ -27,8 +32,6 @@ namespace cmpg223project
             //total bookings
             if (db.selectClients("WHERE client_type='b'"))
                 lblRegisteredClients.Text = "" + db.clientData.Rows.Count;
-            if(db.selectClients("WHERE client_type='c'"))
-                lblnotRegistered.Text = ""+db.clientData.Rows.Count;
             if(db.selectBookings())
                 lblTotalBookings.Text = ""+db.bookingData.Rows.Count;
             if (db.selectBookings())
@@ -36,8 +39,12 @@ namespace cmpg223project
             if(db.selectLostFound())
                 gridLostFound.DataSource = db.lostFoundData;gridLostFound.DataBind();
             //lblNewBookings.Text = date.ToString();
+            if(db.selectLostFound("WHERE description LIKE '%claimed by%'"))
+                lblClaimedItems.Text = ""+db.lostFoundData.Rows.Count;
+            if (db.selectLostFound("WHERE description NOT LIKE '%claimed by%'"))
+                lblUnclaimedItems.Text = "" + db.lostFoundData.Rows.Count;
 
-            
+
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -80,6 +87,20 @@ namespace cmpg223project
                 lostFoundEmpty.Text = "Nothing to see here...";
             }
             
+        }
+        
+        protected void addLostFound(object sender, EventArgs e)
+        {
+            int room = int.Parse(roomID.SelectedValue);
+            string description = txtDescription.Text;
+            DateTime today = DateTime.Now.Date;
+            LostFound item = new LostFound(description, today, room);
+            if (db.insertLostFound(item))
+            {
+                //success message
+                //toast.Enabled = true;
+                isInLostFound = true;
+            }
         }
 
         protected void gridLostFound_SelectedIndexChanged(object sender, EventArgs e)

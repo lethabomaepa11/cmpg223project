@@ -133,7 +133,7 @@ namespace cmpg223project
         //Lost and found
         public bool insertLostFound(LostFound lostFound)
         {
-            sql = "INSERT INTO LostFoundItems(description,found_date,room_id) VALUES(@description,@found_date,room_id);";
+            sql = "INSERT INTO LostFoundItems(description,found_date,room_id) VALUES(@description,@found_date,@room_id);";
             command = new SqlCommand(sql,connection);
             command.Parameters.AddWithValue("@description", lostFound.description);
             command.Parameters.AddWithValue("@found_date", lostFound.found_date);

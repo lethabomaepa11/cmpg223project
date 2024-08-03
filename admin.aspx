@@ -66,12 +66,16 @@
                                     <p class="text-gray-300">Total Bookings</p>
                                 </div>
                                 <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
-                                    <asp:label runat="server" ID="lblnotRegistered" class="font-bold text-lg">0</asp:label>
-                                    <p class="text-gray-300">Unregistered clients</p>
-                                </div>
-                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
                                     <asp:label runat="server" ID="lblRegisteredClients" class="font-bold text-lg">0</asp:label>
                                     <p class="text-gray-300">Registered clients</p>
+                                </div>
+                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <asp:label runat="server" ID="lblClaimedItems" class="font-bold text-lg">0</asp:label>
+                                    <p class="text-gray-300">Claimed lost items</p>
+                                </div>
+                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <asp:label runat="server" ID="lblUnclaimedItems" class="font-bold text-lg">0</asp:label>
+                                    <p class="text-gray-300">Available lost items</p>
                                 </div>
                             </div>
                             <section class="flex gap-2">
@@ -104,6 +108,7 @@
                         </main>
                     </asp:View>
                     <asp:View ID="View2" runat="server">
+
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                             <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -114,7 +119,62 @@
                         </nav>
                             <!--- Use GridView -->
                             <asp:Label runat="server" ID="lostFoundEmpty"></asp:Label>
-                            <asp:LinkButton runat="server" CssClass="text-white bg-blue-500 p-2 rounded-md w-fit"><i class="fa fa-add"></i> Add New</asp:LinkButton>
+                        
+
+                            <!-- Modal -->
+                            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="text-white bg-blue-500 p-2 rounded-md w-fit" type="button">
+                              <i class="fa fa-circle-plus"></i> Add New Item 
+                            </button>
+
+                            <!-- Main modal -->
+                            <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <!-- Modal header -->
+                                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                                Add new LostFound Item
+                                            </h3>
+                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-fit ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="p-4 md:p-5 flex flex-col justify-center items-center">
+                                            <p class="text-gray-300 text-sm m-2">Add the item description and the room where it was found</p>
+
+                                            <div class="grid gap-4 mb-4 grid-cols-2">
+                                                <div class="col-span-2 sm:col-span-1">
+                                                    <label for="roomID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Room number</label>
+                                                    <asp:DropDownList runat="server" ID="roomID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        <asp:ListItem Text="1" value="1">1</asp:ListItem>
+                                                        <asp:ListItem Text="2" value="1">2</asp:ListItem>
+                                                        <asp:ListItem Text="3" value="1">3</asp:ListItem>
+                                                        <asp:ListItem Text="4" value="1">4</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Choose a room Number" ControlToValidate="roomID"></asp:RequiredFieldValidator>
+                                                <div class="col-span-2">
+                                                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Description</label>
+                                                    <asp:TextBox runat="server" ID="txtDescription" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></asp:TextBox>      
+                                                    <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="error" runat="server" ErrorMessage="Description Required!!" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
+
+                                                </div>
+                                            </div>
+                                            <asp:LinkButton runat="server" ID="btnAddLostFound" OnClick="addLostFound" class="flex w-2/3 justify-center items-center text-white gap-2 inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                <i class="fa fa-plus"></i>
+                                                Add Item
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!--Modal ends here--> 
+                        <div class="overflow-auto w-fit h-2/3">
                             <asp:GridView ID="gridLostFound" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="0px" CellPadding="8" GridLines="Horizontal" OnSelectedIndexChanged="gridLostFound_SelectedIndexChanged" ForeColor="Black">
                                 <Columns>
                                     <asp:CommandField  ShowDeleteButton="true" ButtonType="Button" ControlStyle-CssClass="rounded p-2 bg-red-500 text-white">
@@ -135,6 +195,7 @@
                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                 <SortedDescendingHeaderStyle BackColor="#383838" />
                             </asp:GridView>
+                        </div>
                     </asp:View>
                     <asp:View ID="View3" runat="server">
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -147,6 +208,7 @@
                         </nav>
                            <!--- Use GridView -->
                             <asp:Label runat="server" ID="bookingsEmpty"></asp:Label>
+                        <div class="overflow-auto w-fit h-2/3">
                             <asp:GridView ID="gridBookings" runat="server" BackColor="White" BorderColor="#CCCCCC" Rad BorderWidth="0px" CellPadding="8" GridLines="Horizontal" ForeColor="Black">
                                  <RowStyle ForeColor="white" BackColor="#1f2937" />
                                      <FooterStyle BackColor="#CCCCCC" />
@@ -158,7 +220,7 @@
                                      <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                      <SortedDescendingHeaderStyle BackColor="#383838" />
                             </asp:GridView>
-
+                        </div>
                     </asp:View>
                 </asp:MultiView>
             </main>
