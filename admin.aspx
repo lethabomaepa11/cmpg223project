@@ -50,7 +50,7 @@
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                             <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="Exterior/k.png" class="h-10" alt="Flowbite Logo" />
+                                <img src="Exterior/k.png" class="h-10" alt="Logo" />
                                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">DashBoard</span>
                             </a>
                           </div>
@@ -160,7 +160,7 @@
                                                 <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Choose a room Number" ControlToValidate="roomID"></asp:RequiredFieldValidator>
                                                 <div class="col-span-2">
                                                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Description</label>
-                                                    <asp:TextBox runat="server" ID="txtDescription" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></asp:TextBox>      
+                                                    <asp:TextBox runat="server" Text="A " ID="txtDescription" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></asp:TextBox>      
                                                     <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="error" runat="server" ErrorMessage="Description Required!!" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
 
                                                 </div>
@@ -175,7 +175,7 @@
                             </div> 
                             <!--Modal ends here--> 
                         <div class="overflow-auto w-fit h-2/3">
-                            <asp:GridView ID="gridLostFound" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="0px" CellPadding="8" GridLines="Horizontal" OnSelectedIndexChanged="gridLostFound_SelectedIndexChanged" ForeColor="Black">
+                            <asp:GridView OnRowDeleting="gridLostFound_RowDeleting" OnRowEditing="gridLostFound_RowEditing" ID="gridLostFound" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="0px" CellPadding="8" GridLines="Horizontal" OnSelectedIndexChanged="gridLostFound_SelectedIndexChanged" ForeColor="Black">
                                 <Columns>
                                     <asp:CommandField  ShowDeleteButton="true" ButtonType="Button" ControlStyle-CssClass="rounded p-2 bg-red-500 text-white">
                                     <ControlStyle CssClass="rounded p-2 bg-red-500 text-white" />
@@ -196,12 +196,13 @@
                                 <SortedDescendingHeaderStyle BackColor="#383838" />
                             </asp:GridView>
                         </div>
+
                     </asp:View>
                     <asp:View ID="View3" runat="server">
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                             <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <img src="Exterior/k.png" class="h-8" alt="Flowbite Logo" />
+                                <img src="Exterior/k.png" class="h-8" alt="Logo" />
                                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bookings</span>
                             </a>
                           </div>

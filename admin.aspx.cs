@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
@@ -99,13 +100,41 @@ namespace cmpg223project
             {
                 //success message
                 //toast.Enabled = true;
-                isInLostFound = true;
+                MultiView1.ActiveViewIndex = 1;
             }
         }
 
         protected void gridLostFound_SelectedIndexChanged(object sender, EventArgs e)
         {
             //get the index clicked
+        }
+
+        protected void gridLostFound_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int index = e.RowIndex;
+            if(index > 0 && index < gridLostFound.Rows.Count)
+            {
+                GridViewRow row = gridLostFound.Rows[index];
+                int id = int.Parse(row.Cells[2].Text);//because the first two indices, 0 and 1 are the buttons
+                if (db.delete("lostfounditems", $"item_id = {id}"))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", $"alert('Successfully Deleted Item {id}');", true);
+                    db.selectLostFound();
+                    gridLostFound.DataSource = db.lostFoundData;
+                    gridLostFound.DataBind();
+                    MultiView1.ActiveViewIndex = 1;
+                }
+            }
+            else
+            {
+                Response.Redirect("/admin");
+            }
+            
+        }
+
+        protected void gridLostFound_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            //display the edit form and give the id of the lost found
         }
     }
 }
