@@ -21,8 +21,8 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th scope="row">First Name</th>
-                                <td>Mark</td>
+                                <th scope="row" style="width: 80px;">First Name</th>
+                                <td style="width: 200px;">Mark</td>
                             </tr>
                             <tr>
                                 <th scope="row">Last Name</th>
