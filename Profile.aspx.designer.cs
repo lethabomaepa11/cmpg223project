@@ -24,15 +24,6 @@ namespace cmpg223project
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ViewPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ViewPanel;
-
-        /// <summary>
         /// lblName control.
         /// </summary>
         /// <remarks>
@@ -76,6 +67,24 @@ namespace cmpg223project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEditInfo;
+
+        /// <summary>
+        /// gridClaimedLostFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridClaimedLostFound;
+
+        /// <summary>
+        /// gridBookings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridBookings;
 
         /// <summary>
         /// EditPanel control.
