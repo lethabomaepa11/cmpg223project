@@ -17,11 +17,11 @@
         <div class="container">
                 <div class="row">
                 <div class="col-sm-12">
-                   <h3 ">Client Details</h3>
+                   <h3>Client Details</h3>
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 60px;">First Name</th>
+                                <th scope="row" style="width: 80px;">First Name</th>
                                 <td style="width: 200px;">Mark</td>
                             </tr>
                             <tr>
@@ -29,8 +29,8 @@
                                 <td>Otto</td>
                             </tr>
                             <tr>
-                                <th scope="row">Age</th>
-                                <td>23</td>
+                                <th scope="row">Username</th>
+                                <td>@mdo</td>
                             </tr>
                             <tr>
                                 <th scope="row">Email</th>
@@ -45,10 +45,6 @@
                                 <td>#23022</td>
                             </tr>
                             <tr>
-                            <th scope="row">Number of people</th>
-                            <td>4</td>
-                            </tr>
-                            <tr>
                             <th scope="row">Rooms Booked</th>
                             <td>2</td>
                             </tr>
@@ -57,12 +53,8 @@
                             <td>Luxury</td>
                             </tr>
                             <tr>
-                            <th scope="row">Booking Details</th>
-                            <td>14th Mar 2023 - 19th Mar 2023</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Cost of Stay</th>
-                            <td>R900,00</td>
+                            <th scope="row">Number of people</th>
+                            <td>4</td>
                             </tr>
                         </tbody>
                     </table>
