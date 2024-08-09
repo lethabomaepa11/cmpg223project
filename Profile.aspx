@@ -6,12 +6,11 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body >
     <form id="form1" runat="server">
-        <div>
-        </div>
-        <asp:Panel ID="ViewPanel" runat="server" Height="275px">
-            <h2>View Profile</h2>
+        <div class="text-bg-dark text-center">
+            <h1>Profile</h1>
+        </div
             <p style="font-weight: 700">
                 Name:
                 <asp:Label ID="lblName" runat="server"></asp:Label>
