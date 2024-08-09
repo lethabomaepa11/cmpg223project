@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace cmpg223project
 {
@@ -54,7 +56,7 @@ namespace cmpg223project
                     else
                     {
                         client.client_type = "b";
-                        sql = "INSERT INTO Clients(email,name,surname,cell_number,age,client_type) VALUES('admin@potchstream.com','Admin','Man','1234567890','31','a')";
+                        sql = "INSERT INTO Clients(email,name,surname,cell_number,client_type,age,password) VALUES('" + client.email + "','" + client.name + "','" + client.surname + "','" + client.cell_number + "','" + client.client_type + "','" + client.age +"','" + client.password +"')";
                         //select all where email equal this email if not exists then insert  
                     }
 
@@ -292,10 +294,33 @@ namespace cmpg223project
         }
         public string checkOutDate;
 
+        //hashing and verifying
+        public string hash(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
+        public bool verify(string inputPassword, string storedHashedPassword)
+        {
+            string hashedInputPassword = hash(inputPassword);
+            return hashedInputPassword.Equals(storedHashedPassword, StringComparison.OrdinalIgnoreCase);
+        }
+
+
+
     }
 
 
 
 
-    
+
 }

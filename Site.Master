@@ -83,7 +83,7 @@
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/lost-found.aspx">Lost&found</a></li>
 
                 </ul>
-                <asp:LinkButton ID="btnToLogin" class="flex items-center text-white text-decoration-none nav-item btn btn-primary" runat="server" href="/login"><i class="fa fa-right-to-bracket"></i> Login </asp:LinkButton>
+                <asp:LinkButton ID="btnToLogin" class="flex items-center text-white text-decoration-none nav-item btn btn-primary" runat="server" href="/Auth"><i class="fa fa-right-to-bracket"></i> Login </asp:LinkButton>
                 <asp:LinkButton ID="btnToProfile" class="flex gap-2 items-center text-white text-decoration-none p-2 nav-item btn  px-4 py-1 transition-all btn-primary" runat="server" href="/profile"><i class="fa fa-user text-xl"></i> Profile</asp:LinkButton>
 
             </div>
