@@ -12,7 +12,7 @@ namespace cmpg223project
     
     public class Database
     {
-        public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\Source\Repos\lethabomaepa11\cmpg223project\PotchStream.mdf;Integrated Security=True;Connect Timeout=30";
+        public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|PotchStream.mdf;Integrated Security=True;Connect Timeout=30";
         SqlDataAdapter adapter;
         SqlConnection connection;
         SqlCommand command;
