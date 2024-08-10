@@ -18,12 +18,7 @@ namespace cmpg223project
             if(Session["session_id"] != null)
             {
 
-                if (!IsPostBack)
-                {
-                    LoadProfileData();
-                }
-                else
-                {
+                
                     email = Session["session_id"].ToString();
                     if (db.selectClients($"WHERE email = '{email}'"))
                     {
@@ -53,12 +48,8 @@ namespace cmpg223project
                             //make sure your display it on a gridview
                             
                         }
+                
                     }
-                    else
-                    {
-                        Response.Redirect("/Auth");
-                    }
-                }
             }
             else
             {

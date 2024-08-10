@@ -218,14 +218,31 @@ namespace cmpg223project
             }
             
         }
+        public bool insertIntoRooms(Room room)
+        {
+            
+            sql = $"INSERT INTO Rooms(description,price,image_url,room_type) VALUES('{room.description}','{room.price}','{room.image_url}','{room.room_type}');";
+            command = new SqlCommand(sql, connection);
+            int rows = command.ExecuteNonQuery();
+            return rows > 0;
+        }
         public void updateRooms()
         {
 
         }
-        
-        public void selectRooms()
+        public DataTable roomData = new DataTable();//move to top
+        public bool selectRooms(string condition = "")
         {
-
+            sql = $"SELECT room_id, description, price, image_url FROM Rooms {condition}";
+            command = new SqlCommand(sql, connection);
+            adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            //int rowsAffected = adapter.SelectCommand.ExecuteNonQuery();
+            roomData.Clear();
+            //roomData.Columns.Clear();
+            adapter.Fill(roomData);
+            return roomData.Rows.Count>0;
+            
         }
         public string generateRandom(int length)
         {

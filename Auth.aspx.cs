@@ -74,7 +74,16 @@ namespace cmpg223project
                     if (db.verify(password, hashedPassword))
                     {
                         Session["session_id"] = email;
-                        Response.Redirect("/profile");
+                        if (Session["back_path"] != null)
+                        {
+                            Session["from_login"] = true;
+                            Response.Redirect(Session["back_path"].ToString());
+                        }
+                        else
+                        {
+                            Response.Redirect("/profile");
+                        }
+                        
                     }
                     else
                     {
