@@ -5,6 +5,15 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5px;
+}
+
+input{
+    border: 2px solid #ccc;
+    padding: 1rem;
+    
 }
 
 body {
@@ -69,6 +78,7 @@ p {
     height: 60px;
     padding-left: 20px;
     vertical-align: middle;
+    border-radius: 10px;
 }
 
 .form-control:focus {
@@ -87,4 +97,17 @@ p {
     font-size: 14px;
     font-weight: 600;
 }
+
+input[type="submit"] {
+    margin-top: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
 }
+

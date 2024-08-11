@@ -170,8 +170,11 @@ namespace cmpg223project
                 cell = TxtbCellphone.Text;
 
                 Client client = new Client(email,name,surname,cell);
-                db.insertClients(client);
-                Session["booking_email"] = email;
+                if (db.insertClients(client))
+                {
+                    Session["booking_email"] = email;
+                }
+                
             }
             else
             {
@@ -183,7 +186,14 @@ namespace cmpg223project
         }
         protected void nextPage(object sender, EventArgs e)
         {
-            //++page;
+            //if the button was clicked on the first page
+            if(MultiView1.ActiveViewIndex == 0)
+            {
+                Session["check_in"] = txtCheckIn.Text;
+                Session["check_out"] = txtCheckOut.Text;
+                int num_people = int.Parse(DropDownList2.SelectedValue) + int.Parse(DropDownList3.SelectedValue);
+                Session["num_people"] = num_people;
+            }
             MultiView1.ActiveViewIndex++;
 
         }

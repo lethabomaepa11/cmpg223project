@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CSS.css" />
     <Content Include="Default.aspx" />
     <Content Include="Exterior\african-businessman_resized.jpg" />
     <Content Include="Exterior\final version.mp4" />
@@ -137,6 +138,7 @@
     <Content Include="lost-found.aspx" />
     <Content Include="libman.json" />
     <Content Include="App_Data\PotchStream.mdf" />
+    <Content Include="Payment.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -245,6 +247,13 @@
       <DependentUpon>lost-found.aspx</DependentUpon>
     </Compile>
     <Compile Include="LostFound.cs" />
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

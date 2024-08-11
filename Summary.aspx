@@ -22,39 +22,39 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 80px;">First Name</th>
-                                <td style="width: 200px;">Mark</td>
+                                <td style="width: 200px;"><asp:Label runat="server" ID="lblName"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Last Name</th>
-                                <td>Otto</td>
+                                <td><asp:Label runat="server" ID="lblSurname"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Username</th>
-                                <td>@mdo</td>
+                                <td>@<asp:Label runat="server" ID="lblUsername"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Email</th>
-                                <td>mark.otto@example.com</td>
+                                <td><asp:Label runat="server" ID="lblEmail"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Phone Number</th>
-                                <td>+27(78) 9745974</td>
+                                <td><asp:Label runat="server" ID="lblPhone"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Reservance code</th>
-                                <td>#23022</td>
+                                <td><asp:Label runat="server" ID="lblCode"></asp:Label></td>
                             </tr>
                             <tr>
                             <th scope="row">Rooms Booked</th>
-                            <td>2</td>
+                            <td><asp:Label runat="server" ID="lblNumRooms"></asp:Label></td>
                             </tr>
                             <tr>
                             <th scope="row">Decription of room</th>
-                            <td>Luxury</td>
+                            <td><asp:Label runat="server" ID="lblRoomDescription"></asp:Label></td>
                             </tr>
                             <tr>
                             <th scope="row">Number of people</th>
-                            <td>4</td>
+                            <td><asp:Label runat="server" ID="lblNumPeople"></asp:Label></td>
                             </tr>
                         </tbody>
                     </table>

@@ -202,7 +202,7 @@ namespace cmpg223project
         }
 
         //room
-        public bool insertRooms(string reservation_code,int roomID)
+        public bool insertRooms(string reservation_code,string roomID)
         {
             //bool r = true;
             try

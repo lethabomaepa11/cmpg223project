@@ -151,10 +151,7 @@
                                                 <div class="col-span-2 sm:col-span-1">
                                                     <label for="roomID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Room number</label>
                                                     <asp:DropDownList runat="server" ID="roomID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                        <asp:ListItem Text="1" value="1">1</asp:ListItem>
-                                                        <asp:ListItem Text="2" value="1">2</asp:ListItem>
-                                                        <asp:ListItem Text="3" value="1">3</asp:ListItem>
-                                                        <asp:ListItem Text="4" value="1">4</asp:ListItem>
+                                                        
                                                     </asp:DropDownList>
                                                 </div>
                                                 <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Choose a room Number" ControlToValidate="roomID"></asp:RequiredFieldValidator>
@@ -210,7 +207,7 @@
                            <!--- Use GridView -->
                             <asp:Label runat="server" ID="bookingsEmpty"></asp:Label>
                         <div class="overflow-auto w-fit h-2/3">
-                            <asp:GridView ID="gridBookings" runat="server" BackColor="White" BorderColor="#CCCCCC" Rad BorderWidth="0px" CellPadding="8" GridLines="Horizontal" ForeColor="Black">
+                            <asp:GridView AllowSorting="true" OnSorting="gridBookings_Sorting" ID="gridBookings" runat="server" BackColor="White" BorderColor="#CCCCCC" Rad BorderWidth="0px" CellPadding="8" GridLines="Horizontal" ForeColor="Black">
                                  <RowStyle ForeColor="white" BackColor="#1f2937" />
                                      <FooterStyle BackColor="#CCCCCC" />
                                      <HeaderStyle BackColor="#374151" Font-Bold="True" ForeColor="#9ca3af"  />

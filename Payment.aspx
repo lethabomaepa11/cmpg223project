@@ -1,17 +1,42 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="cmpg223project.Payment" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+        <title>Payment: PotchStream</title>
+    <link href="Content/boostrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
     <style type="text/css">
+
         .auto-style1 {
             width: 658px;
         }
         .auto-style2 {
             width: 660px;
         }
+        input{
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            outline-color: #4CAF50;
+        }
+        input[type="submit"] {
+            margin-top: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
     </style>
-</head>
     <link rel="stylesheet" href="CSS.css" />
+</head>
+    
 <body>
     <form id="form1" runat="server">
         
@@ -63,9 +88,10 @@
                 <div class="col-12">
                     <div class="btn btn-primary mb-3">
                        
-                        <asp:Label ID="Label1" runat="server" Text="Total Payment: R"></asp:Label>
+                        <asp:Label runat="server" ID="lblAmount" Text="Total Payment: "></asp:Label>
                         <span class="fas fa-arrow-right"></span>
                     </div>
+                    <asp:Button CssClass="confirm" runat="server" ID="confirm" OnClick="confirmPayment" Text="Confirm Payment"/>
                 </div>
             </div>
         </div>
