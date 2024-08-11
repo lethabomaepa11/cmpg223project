@@ -12,6 +12,7 @@ namespace cmpg223project
     {
         int page = 0;
         Database db = new Database();
+        decimal amount;
         protected void Page_Load(object sender, EventArgs e)
         {
             //add rooms, (description,price, image_url, room_type)
@@ -42,17 +43,19 @@ namespace cmpg223project
                
             }
             
-            if (Request.Cookies["rooms"] != null)
+            if (Session["rooms"] != null)
             {
                 btnClear.Visible = true;
                 btnBookNow.Visible = true;
                 lblSelectedRooms.Text = "";
-
+                amount = (decimal)double.Parse(Session["amount"].ToString());
+                lblAmount.Text = amount.ToString("c");
             }
             else
             {
                 btnClear.Visible = false;
                 btnBookNow.Visible = false;
+                lblAmount.Text = 0.ToString("c");
                 lblSelectedRooms.Text = "No rooms selected!";
             }
             if (Session["from_login"] != null)
@@ -100,36 +103,23 @@ namespace cmpg223project
             btnBookNow.Visible = true;
             Button btnSelect = (Button)sender;
             string roomId = btnSelect.CommandArgument;
-            string rooms = null;//will be divided by %
-            if(Response.Cookies.Get("rooms") != null)
+            //string rooms = null;//will be divided by %
+            if(Session["rooms"] != null)
             {
-                HttpCookie roomsCookie = Request.Cookies["rooms"];
-                if(roomsCookie.Value != null)
-                {
-                    rooms = roomsCookie.Value;
-                    rooms = rooms.Replace("rooms=", "").Trim();
-                    rooms += roomId + "%";
-                }
-                else
-                {
-                    rooms = roomId+ "%";
-                }
-                roomsCookie.Value = rooms;
-                roomsCookie.Expires = DateTime.Now.AddDays(1);
-                Response.Cookies.Set(roomsCookie);
-                //lblSelectedRooms.Text = rooms;
+                Session["rooms"] += roomId + "%";
+                //lblSelectedRooms.Text = Session["rooms"].ToString();
             }
             else
             {
-                HttpCookie roomCookie = new HttpCookie("rooms");
-                roomCookie["rooms"] = roomId+"%";
-                rooms = roomCookie.Value;
-                Response.Cookies.Add(roomCookie);
+                Session["rooms"] = roomId + "%";
+                //lblSelectedRooms.Text = Session["rooms"].ToString();
             }
-            
+
             //lblSelectedRooms.Text = rooms;
+            string rooms = Session["rooms"].ToString();
             string[] ids = rooms.Split('%');
-            decimal amount = 0;
+            amount = 0;
+            
             foreach(string id in ids)
             {
                 
@@ -142,18 +132,17 @@ namespace cmpg223project
                 
                 
             }
+            
             lblAmount.Text = "Total Amount: "+ amount.ToString("c");
             Session["amount"] = amount;
             MultiView1.ActiveViewIndex = 1;
         }
         protected void clearSelection(object sender, EventArgs e)
         {
-            if (Request.Cookies["rooms"] != null)
+            if (Session["rooms"] != null)
             {
-                HttpCookie cookie = new HttpCookie("rooms");
-                cookie.Expires = DateTime.Now.AddDays(-1);
-
-                Response.Cookies.Add(cookie);
+                Session["rooms"] = null;
+                Session["amount"] = null;
                 lblAmount.Text = string.Empty;  
                 btnBookNow.Visible = false;
                 btnClear.Visible = false;
@@ -166,6 +155,30 @@ namespace cmpg223project
         {
             
             MultiView1.ActiveViewIndex = 1;
+
+        }
+        protected void toPayment(object sender, EventArgs e)
+        {
+            if (Session["session_id"] == null)
+            {
+                //if this user is not a logged_in user
+                //receive every input and insert into db
+                string name, surname, cell, email;
+                name = TxtbName.Text;
+                surname = TxtbSurname.Text;
+                email = TxtbEmail.Text;
+                cell = TxtbCellphone.Text;
+
+                Client client = new Client(email,name,surname,cell);
+                db.insertClients(client);
+                Session["booking_email"] = email;
+            }
+            else
+            {
+                Session["booking_email"] = Session["session_id"];
+            }
+            
+            Response.Redirect("/payment");
 
         }
         protected void nextPage(object sender, EventArgs e)

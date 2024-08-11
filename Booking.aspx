@@ -20,8 +20,8 @@
             margin: 20px auto;
             padding: 20px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff; /* White background */
+            border-radius: 10px;
+            background-color: #ffffff; /* White background */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
         }
         .form-container h2 {
@@ -332,7 +332,7 @@
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TxtbEmail" ErrorMessage="Enter valid Email!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ForeColor="Red"></asp:RegularExpressionValidator>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtbEmail" ErrorMessage="Enter Email!" ForeColor="Red"></asp:RequiredFieldValidator> 
                                         <div class="flex">
-                                            <asp:Button CssClass="bg-blue-500 rounded-md p-3" ID="BtnBook" runat="server" Font-Bold="True" Font-Size="Medium" Text="Confirm Booking" />
+                                            <asp:Button CssClass="bg-blue-500 rounded-md p-3" ID="BtnBook" runat="server" OnClick="toPayment" Font-Bold="True" Font-Size="Medium" Text="Proceed to payment" />
                                         </div>    
                                 </main>
                             </asp:View>
