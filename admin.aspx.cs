@@ -115,6 +115,7 @@ namespace cmpg223project
             {
                 //success message
                 //toast.Enabled = true;
+                Response.Redirect("/admin");
                 MultiView1.ActiveViewIndex = 1;
             }
         }
@@ -133,11 +134,11 @@ namespace cmpg223project
                 int id = int.Parse(row.Cells[2].Text);//because the first two indices, 0 and 1 are the buttons
                 if (db.delete("lostfounditems", $"item_id = {id}"))
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", $"alert('Successfully Deleted Item {id}');", true);
                     db.selectLostFound();
                     gridLostFound.DataSource = db.lostFoundData;
                     gridLostFound.DataBind();
                     MultiView1.ActiveViewIndex = 1;
+             
                 }
             }
             else
@@ -176,6 +177,47 @@ namespace cmpg223project
             }
             MultiView1.ActiveViewIndex = 2;//bookings
         }
-        
+
+        protected void DisplayHelp(object sender, GridViewSortEventArgs e)
+        {
+            //get the multiview1 index, set the active page, display help info according to the active page
+            string[] pages = { "dashboard", "lostfound", "bookings" };
+            int index = MultiView1.ActiveViewIndex;
+            string activePage = pages[index];
+            switch (activePage)
+            {
+                case "dashboard":
+                    break;
+                case "lostfound":
+                    break;
+                case "bookings":
+                    break;
+                default:
+                    break;
+                    
+            }
+        }
+
+        protected void Search_Click(object sender, EventArgs e)
+        {
+            String date = searchDate.Text;
+            db.selectBookings($"WHERE check_in='{date}'");
+            gridBookings.DataSource = db.bookingData; gridBookings.DataBind();  
+            if(!(db.bookingData.Rows.Count > 0))
+            {
+                bookingsEmpty.Text = "No items were found!";
+            }
+            else
+            {
+                bookingsEmpty.Text = "";
+            }
+            MultiView1.ActiveViewIndex = 2;
+        }
+        protected void ResetBookingFilter(object sender, EventArgs e)
+        {
+            db.selectBookings();
+            gridBookings.DataSource = db.bookingData; gridBookings.DataBind();
+            MultiView1.ActiveViewIndex = 2;
+        }
     }
 }

@@ -80,12 +80,20 @@ namespace cmpg223project
         }
         public bool updateClients(String email,String set)
         {
-            String s = "UPDATE CLIENTS SET " + set + " WHERE email= '" + email + "';";
-            command = new SqlCommand(s, connection);
-            //adapter = new SqlDataAdapter();
-            //adapter.UpdateCommand = command;
-            int rowsAffected = command.ExecuteNonQuery();
-            return rowsAffected > 0;
+            try
+            {
+                String s = "UPDATE Clients SET " + set + " WHERE email= '" + email + "';";
+                command = new SqlCommand(s, connection);
+                //adapter = new SqlDataAdapter();
+                //adapter.UpdateCommand = command;
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected == 1;
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Error: " + e.ToString());
+            }
+            
         }
         public bool delete(String table,String condition)
         {

@@ -68,23 +68,29 @@ namespace cmpg223project
             lblEmail.Text = client["email"].ToString();
             lblCellNumber.Text = client["cell_number"].ToString();
 
-            txtName.Text = lblName.Text;
-            txtSurname.Text = lblSurname.Text;
+            //txtName.Text = lblName.Text;
+            //txtSurname.Text = lblSurname.Text;
             txtEmail.Text = lblEmail.Text;
-            txtCellNumber.Text = lblCellNumber.Text;
+            //txtCellNumber.Text = lblCellNumber.Text;
             ViewPanel.Visible = true;
             EditPanel.Visible = false;
         }
-
-        protected void btnSave_Click(object sender, EventArgs e)
+        protected void Logout(object sender, EventArgs e)
+        {
+            Session["session_id"] = null;
+            Response.Redirect("/auth");
+        }
+            protected void btnSave_Click(object sender, EventArgs e)
         {
             String name = txtName.Text;
             String surname = txtSurname.Text;
             String newEmail = txtEmail.Text;
-            String phone = txtCellNumber.Text;
-            if(db.updateClients(email,$"name = '{name}', surname = '{surname}', cell_number = '{phone}'"))
+            String phone = txtCellNumber.Text.Replace(" ","");
+            email = Session["session_id"].ToString();
+            
+            if (db.updateClients(email,$"name = '{name}', surname = '{surname}', cell_number = '{phone}'"))
             {
-                LoadProfileData();
+                Response.Redirect("/profile");
                 ViewPanel.Visible = true;
                 EditPanel.Visible = false;
             }

@@ -20,8 +20,31 @@
         }
         h1,h2,h3,h4,h5,h6{
             font-family: Poppins, sans-serif;
-            font-weight: 500;
-            font-size: 2rem;
+        }
+        input[type=text]{
+            border: 2px solid #bbb;
+            height: 44px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        input[type=submit], #logout{
+            margin-top: 1rem;
+            border-radius: 10px;
+            background-color: royalblue;
+            color: white;
+            padding: 0.8rem;
+            min-width: 200px;
+            transition: all 0.2s ease-in-out;
+        }
+        input[type=submit]:hover, #logout:hover{
+            transform: scale(0.95);
+        }
+        .link{
+            color: royalblue;
+            text-decoration: underline;
+        }
+        #btnCancel{
+            background-color: red;
         }
     </style>
     <script>
@@ -95,7 +118,7 @@
         <div class="w-100 h-100 pt-16">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <footer class="mt-5 p-3 bg-black w-full text-white-50">
+            <footer class="mt-5 p-3 bg-black w-full text-white-50 fixed bottom-0">
                 <p>&copy; <%: DateTime.Now.Year %> - Potch Stream Hotel</p>
             </footer>
         </div>

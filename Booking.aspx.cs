@@ -118,6 +118,7 @@ namespace cmpg223project
             //lblSelectedRooms.Text = rooms;
             string rooms = Session["rooms"].ToString();
             string[] ids = rooms.Split('%');
+            //lblSelectedRooms.Text = ""+ids.Length;
             amount = 0;
             
             foreach(string id in ids)
