@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
@@ -35,8 +37,12 @@ namespace cmpg223project
                 lblRegisteredClients.Text = "" + db.clientData.Rows.Count;
             if(db.selectBookings())
                 lblTotalBookings.Text = ""+db.bookingData.Rows.Count;
-            if (db.selectBookings())
-                gridBookings.DataSource = db.bookingData; gridBookings.DataBind();
+            if (!IsPostBack)
+            {
+                if (db.selectBookings())
+                    gridBookings.DataSource = db.bookingData; gridBookings.DataBind();
+            }
+            
             if(db.selectLostFound())
                 gridLostFound.DataSource = db.lostFoundData;gridLostFound.DataBind();
             //lblNewBookings.Text = date.ToString();
@@ -44,6 +50,14 @@ namespace cmpg223project
                 lblClaimedItems.Text = ""+db.lostFoundData.Rows.Count;
             if (db.selectLostFound("WHERE description NOT LIKE '%claimed by%'"))
                 lblUnclaimedItems.Text = "" + db.lostFoundData.Rows.Count;
+            if (db.selectRooms())
+            {
+                roomID.DataSource = db.roomData;
+                roomID.DataTextField = "room_id";
+                roomID.DataValueField = "room_id";
+                roomID.DataBind();
+             
+            }
 
 
         }
@@ -92,7 +106,8 @@ namespace cmpg223project
         
         protected void addLostFound(object sender, EventArgs e)
         {
-            int room = int.Parse(roomID.SelectedValue);
+            string room = roomID.SelectedValue;
+            
             string description = txtDescription.Text;
             DateTime today = DateTime.Now.Date;
             LostFound item = new LostFound(description, today, room);
@@ -136,5 +151,31 @@ namespace cmpg223project
         {
             //display the edit form and give the id of the lost found
         }
+
+        protected void gridBookings_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            db.bookingData = ViewState["DataTable"] as DataTable;
+
+            if (db.bookingData != null)
+            {
+                DataView dataView = new DataView(db.bookingData);
+
+                if (ViewState["SortDirection"] == null || ViewState["SortDirection"].ToString() == "ASC")
+                {
+                    dataView.Sort = e.SortExpression + " DESC";
+                    ViewState["SortDirection"] = "DESC";
+                }
+                else
+                {
+                    dataView.Sort = e.SortExpression + " ASC";
+                    ViewState["SortDirection"] = "ASC";
+                }
+
+                gridBookings.DataSource = dataView;
+                gridBookings.DataBind();
+            }
+            MultiView1.ActiveViewIndex = 2;//bookings
+        }
+        
     }
 }

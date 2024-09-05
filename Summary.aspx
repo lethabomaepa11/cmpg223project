@@ -17,52 +17,44 @@
         <div class="container">
                 <div class="row">
                 <div class="col-sm-12">
-                   <h3 ">Client Details</h3>
+                   <h3>Client Details</h3>
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 60px;">First Name</th>
-                                <td style="width: 200px;">Mark</td>
+                                <th scope="row" style="width: 80px;">First Name</th>
+                                <td style="width: 200px;"><asp:Label runat="server" ID="lblName"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Last Name</th>
-                                <td>Otto</td>
+                                <td><asp:Label runat="server" ID="lblSurname"></asp:Label></td>
                             </tr>
                             <tr>
-                                <th scope="row">Age</th>
-                                <td>23</td>
+                                <th scope="row">Username</th>
+                                <td>@<asp:Label runat="server" ID="lblUsername"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Email</th>
-                                <td>mark.otto@example.com</td>
+                                <td><asp:Label runat="server" ID="lblEmail"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Phone Number</th>
-                                <td>+27(78) 9745974</td>
+                                <td><asp:Label runat="server" ID="lblPhone"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Reservance code</th>
-                                <td>#23022</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Number of people</th>
-                            <td>4</td>
+                                <td><asp:Label runat="server" ID="lblCode"></asp:Label></td>
                             </tr>
                             <tr>
                             <th scope="row">Rooms Booked</th>
-                            <td>2</td>
+                            <td><asp:Label runat="server" ID="lblNumRooms"></asp:Label></td>
                             </tr>
                             <tr>
                             <th scope="row">Decription of room</th>
-                            <td>Luxury</td>
+                            <td><asp:Label runat="server" ID="lblRoomDescription"></asp:Label></td>
                             </tr>
                             <tr>
-                            <th scope="row">Booking Details</th>
-                            <td>14th Mar 2023 - 19th Mar 2023</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Cost of Stay</th>
-                            <td>R900,00</td>
+                            <th scope="row">Number of people</th>
+                            <td><asp:Label runat="server" ID="lblNumPeople"></asp:Label></td>
                             </tr>
                         </tbody>
                     </table>
