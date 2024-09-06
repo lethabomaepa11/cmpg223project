@@ -99,7 +99,7 @@
                                     <h1>Charts Registered Clients VS Non-registered</h1>
                                     <asp:Chart ID="ClientsChart" runat="server">
                                         <Series>
-                                            <asp:Series Name="Series1" ChartType="Pie"></asp:Series>
+                                            <asp:Series Name="Series1" ChartType="Bar"></asp:Series>
                                         </Series>
                                         <ChartAreas>
                                             <asp:ChartArea Name="ChartArea1"></asp:ChartArea>

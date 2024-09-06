@@ -87,7 +87,7 @@ namespace cmpg223project
                 //adapter = new SqlDataAdapter();
                 //adapter.UpdateCommand = command;
                 int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected == 1;
+                return rowsAffected > 0;
             }
             catch(Exception e)
             {

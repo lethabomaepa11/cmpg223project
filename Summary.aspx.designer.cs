@@ -15,15 +15,6 @@ namespace cmpg223project
     {
 
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
         /// lblName control.
         /// </summary>
         /// <remarks>
@@ -40,15 +31,6 @@ namespace cmpg223project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSurname;
-
-        /// <summary>
-        /// lblUsername control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsername;
 
         /// <summary>
         /// lblEmail control.
@@ -87,13 +69,13 @@ namespace cmpg223project
         protected global::System.Web.UI.WebControls.Label lblNumRooms;
 
         /// <summary>
-        /// lblRoomDescription control.
+        /// lblAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRoomDescription;
+        protected global::System.Web.UI.WebControls.Label lblAmount;
 
         /// <summary>
         /// lblNumPeople control.

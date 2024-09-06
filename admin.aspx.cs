@@ -9,6 +9,7 @@ using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace cmpg223project
 {
@@ -58,6 +59,15 @@ namespace cmpg223project
                 roomID.DataBind();
              
             }
+            DataTable mydata = new DataTable();
+            // Define the columns and their names
+            mydata.Columns.Add("Series Labels", typeof(string));
+            mydata.Columns.Add("Column A", typeof(int));
+            // Add the rows of data
+            mydata.Rows.Add(new int[] { 1, 4, 10, 4 });
+            
+            ClientsChart.DataSource = mydata;
+            ClientsChart.DataBind();
 
 
         }

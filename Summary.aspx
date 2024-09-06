@@ -1,15 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Summary.aspx.cs" Inherits="cmpg223project.Summary" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Summary.aspx.cs" Inherits="cmpg223project.Summary" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="Scripts/bootstrap.bundle.min.js"></script>
-    <title>Summary</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
         <div class="text-bg-dark text-center">
             <h1>Summary</h1>
             <p>Confirmation of Information</p>
@@ -17,7 +8,7 @@
         <div class="container">
                 <div class="row">
                 <div class="col-sm-12">
-                   <h3>Client Details</h3>
+                    <button class="bg-blue-500 text-white p-3 my-1 rounded" onclick="window.print()">Download Page</button>
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
@@ -27,10 +18,6 @@
                             <tr>
                                 <th scope="row">Last Name</th>
                                 <td><asp:Label runat="server" ID="lblSurname"></asp:Label></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Username</th>
-                                <td>@<asp:Label runat="server" ID="lblUsername"></asp:Label></td>
                             </tr>
                             <tr>
                                 <th scope="row">Email</th>
@@ -49,8 +36,8 @@
                             <td><asp:Label runat="server" ID="lblNumRooms"></asp:Label></td>
                             </tr>
                             <tr>
-                            <th scope="row">Decription of room</th>
-                            <td><asp:Label runat="server" ID="lblRoomDescription"></asp:Label></td>
+                            <th scope="row">Total Amount</th>
+                            <td>R <asp:Label runat="server" ID="lblAmount"></asp:Label></td>
                             </tr>
                             <tr>
                             <th scope="row">Number of people</th>
@@ -61,6 +48,4 @@
                 </div>
             </div>
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>

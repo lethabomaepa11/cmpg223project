@@ -21,13 +21,13 @@
         h1,h2,h3,h4,h5,h6{
             font-family: Poppins, sans-serif;
         }
-        input[type=text]{
+        input[type=text],input[type=email],input[type=number],input[type=password]{
             border: 2px solid #bbb;
             height: 44px;
             border-radius: 10px;
             padding: 10px;
         }
-        input[type=submit], #logout{
+        input[type=submit], #logout, button{
             margin-top: 1rem;
             border-radius: 10px;
             background-color: royalblue;
@@ -36,7 +36,7 @@
             min-width: 200px;
             transition: all 0.2s ease-in-out;
         }
-        input[type=submit]:hover, #logout:hover{
+        input[type=submit]:hover, #logout:hover, button:hover{
             transform: scale(0.95);
         }
         .link{

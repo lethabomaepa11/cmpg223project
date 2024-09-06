@@ -113,7 +113,7 @@
                     <asp:Button CssClass="btn btn-primary bg-slate-900" style="background-color: navy;" ID="Button1" runat="server" Font-Bold="True" Font-Size="Medium" OnClick="ToRegister" Text="Register" CausesValidation="false" />
                     
                     </main>
-                   <asp:LinkButton runat="server" CssClass="underline my-5 text-blue-500" CausesValidation="false">Forgot password</asp:LinkButton>
+                   <asp:LinkButton runat="server" CssClass="underline my-5 text-blue-500" CausesValidation="false" OnClick="ToForgotPassword_Click">Forgot password</asp:LinkButton>
                    
                 </div>
                 
