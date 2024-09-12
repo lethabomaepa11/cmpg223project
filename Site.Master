@@ -85,7 +85,7 @@
 
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark justify-between fixed w-screen z-50">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark justify-between fixed w-screen z-30">
             <div class="container">
 
                
