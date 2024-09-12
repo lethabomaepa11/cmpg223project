@@ -27,6 +27,15 @@
             border-radius: 10px;
             padding: 10px;
         }
+        @media print {
+            @page {
+                size: A5;
+                margin: 1cm; 
+            }
+            .no-print {
+                display: none; /* Hide elements with the class 'no-print' when printing page */
+            }
+        }
         input[type=submit], #logout, button{
             margin-top: 1rem;
             border-radius: 10px;
