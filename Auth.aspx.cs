@@ -81,7 +81,7 @@ namespace cmpg223project
                         }
                         else
                         {
-                            Response.Redirect("/profile");
+                            Response.Redirect("/");
                         }
                         
                     }
@@ -111,6 +111,11 @@ namespace cmpg223project
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
+        }
+
+        protected void ToForgotPassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ForgotPassword");
         }
     }
 }

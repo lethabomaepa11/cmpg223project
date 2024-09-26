@@ -28,7 +28,7 @@
             border-radius: 10px;
             padding: 10px;
         }
-        input[type=submit]{
+        input[type=submit],.btn{
             margin-top: 1rem;
             border-radius: 10px;
             background-color: royalblue;
@@ -37,7 +37,7 @@
             min-width: 200px;
             transition: all 0.2s ease-in-out;
         }
-        input[type=submit]:hover{
+        input[type=submit]:hover,.btn{
             transform: scale(0.95);
         }
         .link{
@@ -53,7 +53,7 @@
                 <div>
                       <h1 class="font-bold text-xl">Potch Stream Hotel</h1>
                       <img src="Exterior/k.png" alt="logo" class="hidden md:flex object-fit"/>
-                      <asp:LinkButton CssClass="link"  runat="server" OnClick="ToLogin" CausesValidation="false">Login here...</asp:LinkButton>
+                      <asp:LinkButton CssClass="btn bg-slate-900 w-full"  runat="server" OnClick="ToLogin" CausesValidation="false">Login here...</asp:LinkButton>
 
                 </div>
                 <main class="flex flex-col w-full sm:w-2/5 p-2">
@@ -110,9 +110,11 @@
                     <asp:TextBox type="password" ID="TxtbPassword0" runat="server" ToolTip="Your password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TxtbPassword0" ErrorMessage="Enter Password!"></asp:RequiredFieldValidator>
                     <asp:Button CssClass="btn btn-primary" ID="BtnLogin" runat="server" Font-Bold="True" Font-Size="Medium" OnClick="Login" Text="Login" />
+                    <asp:Button CssClass="btn btn-primary bg-slate-900" style="background-color: navy;" ID="Button1" runat="server" Font-Bold="True" Font-Size="Medium" OnClick="ToRegister" Text="Register" CausesValidation="false" />
+                    
                     </main>
+                   <asp:LinkButton runat="server" CssClass="underline my-5 text-blue-500" CausesValidation="false" OnClick="ToForgotPassword_Click">Forgot password</asp:LinkButton>
                    
-                    <asp:LinkButton CssClass="link" runat="server" OnClick="ToRegister" CausesValidation="false">Register here...</asp:LinkButton>
                 </div>
                 
 

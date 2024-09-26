@@ -34,7 +34,7 @@ namespace cmpg223project
             Session["code"] = code;
             //check num of rooms
             string[] rooms = Session["rooms"].ToString().Split('%');
-            int num_rooms = rooms.Length;
+            int num_rooms = rooms.Length-1;
             Booking booking = new Booking(code, email, num_people, price, num_rooms, check_in, check_out);
             if (db.insertBookings(booking))
             {

@@ -18,11 +18,11 @@ namespace cmpg223project
         //creating an account
         public Client(string email, string name, string surname, string cell_number, string age, string password)
         {
-            this.email = email;
+            this.email = email.Replace(" ","");
             this.password = password;
             this.name = name;
             this.surname = surname;
-            this.cell_number = cell_number;
+            this.cell_number = cell_number.Replace(" ", ""); ;
             this.age = age;
         }
         //once-off user

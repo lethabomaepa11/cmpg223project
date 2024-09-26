@@ -258,7 +258,7 @@
     <form id="form1" runat="server">
         <div class="form-container">
             <h2>Room booking</h2>
-            <asp:LinkButton runat="server" OnClick="prevPage">Back</asp:LinkButton>
+            <a href="javascript: history.go(-1)"><i style="font-size: 1.3rem" class="fa fa-arrow-left"></i> Back</a> 
             <asp:MultiView ID="MultiView1" runat="server">
                 <asp:View ID="roomRequest" runat="server">
                     

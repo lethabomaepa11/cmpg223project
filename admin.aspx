@@ -31,7 +31,9 @@
         <div class="min-h-screen flex justify-between bg-gray-900">
             <aside class="hidden lg:flex flex-col min-h-screen w-fit  text-white p-3 gap-5">
                 <div class="flex flex-col bg-gray-800 rounded-md w-full p-5 gap-5 min-h-screen">
-                    <header>
+
+                    <header class="flex items-center gap-3">
+                        <a href="javascript: history.go(-1)"><i style="font-size: 1.3rem" class="fa fa-arrow-left"></i></a> 
                         <h1 class="text-2xl font-bold">PS<span class="text-yellow-300">Admin</span></h1>
                     </header>
                     <nav class="flex flex-col gap-1  p-3 rounded-lg">
@@ -97,7 +99,7 @@
                                     <h1>Charts Registered Clients VS Non-registered</h1>
                                     <asp:Chart ID="ClientsChart" runat="server">
                                         <Series>
-                                            <asp:Series Name="Series1" ChartType="Pie"></asp:Series>
+                                            <asp:Series Name="Series1" ChartType="Bar"></asp:Series>
                                         </Series>
                                         <ChartAreas>
                                             <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
@@ -205,8 +207,15 @@
                           </div>
                         </nav>
                            <!--- Use GridView -->
-                            <asp:Label runat="server" ID="bookingsEmpty"></asp:Label>
+                            <asp:Label runat="server" CssClass="text-red-500" ID="bookingsEmpty"></asp:Label>
                         <div class="overflow-auto w-fit h-2/3">
+                            <div class="flex gap-5 items-center py-10">
+                                <p class="text-white font-bold ">Search By Date: </p>
+                                <asp:TextBox CssClass="p-3 rounded "  runat="server" type="date" ID="searchDate"></asp:TextBox>
+                                <asp:Button CssClass="p-3 bg-blue-500 text-white px-10 rounded" runat="server" OnClick="Search_Click" Text="Search" />
+                                <asp:Button CssClass="p-3 bg-red-500 text-white px-10 rounded" runat="server" OnClick="ResetBookingFilter" Text="Reset" />
+                            </div>
+                            
                             <asp:GridView AllowSorting="true" OnSorting="gridBookings_Sorting" ID="gridBookings" runat="server" BackColor="White" BorderColor="#CCCCCC" Rad BorderWidth="0px" CellPadding="8" GridLines="Horizontal" ForeColor="Black">
                                  <RowStyle ForeColor="white" BackColor="#1f2937" />
                                      <FooterStyle BackColor="#CCCCCC" />

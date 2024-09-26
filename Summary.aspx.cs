@@ -36,6 +36,7 @@ namespace cmpg223project
                     lblCode.Text = code;
                     lblNumPeople.Text = booking["num_people"].ToString();
                     lblNumRooms.Text = booking["num_rooms"].ToString();
+                    lblAmount.Text = booking["price"].ToString();
                     //must include check_in,out and price
 
                 }

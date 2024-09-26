@@ -6,6 +6,8 @@
 <head runat="server">
         <title>Payment: PotchStream</title>
     <link href="Content/boostrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="icons/css/all.min.css"/>
+
     <script src="Scripts/bootstrap.bundle.min.js"></script>
     <style type="text/css">
 
@@ -39,7 +41,7 @@
     
 <body>
     <form id="form1" runat="server">
-        
+        <a href="javascript: history.go(-1)"><i style="font-size: 1.3rem" class="fa fa-arrow-left"></i> Back</a> 
         <table style="width:100%;">
             <tr>
                 <td class="auto-style1">&nbsp;</td>
@@ -68,21 +70,21 @@
                         <br />
                         <asp:Label ID="Label4" runat="server" Text="Card Number"></asp:Label>
                         <br />
-                        <asp:TextBox ID="TextBox2" runat="server" Height="36px" Width="511px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Height="36px" Width="511px" placeholder="XXXX XXXX XXXX XXXX"></asp:TextBox>
 &nbsp;</div>
                 </div>
                 <div class="col-6">
                     <div class="d-flex flex-column">
                         &nbsp;<asp:Label ID="Label3" runat="server" Text="Expiry"></asp:Label>
                         <br />
-                            <asp:TextBox ID="TextBox3" runat="server" Height="36px" Width="514px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox3" runat="server" Height="36px" Width="514px" placeholder="MM/YY"></asp:TextBox>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="d-flex flex-column">
                         <asp:Label ID="Label2" runat="server" Text="CVV/CVC"></asp:Label>
                         <br />
-                            <asp:TextBox ID="TextBox4" runat="server" Height="36px" Width="512px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox4" runat="server" Height="36px" Width="512px" placeholder="XXX"></asp:TextBox>
                         &nbsp;</div>
                 </div>
                 <div class="col-12">
