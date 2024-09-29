@@ -69,6 +69,32 @@
                 </div>
                 
             </div>
+<body >
+    <form id="form1" runat="server">
+        <div class="text-bg-dark text-center">
+            <h1>Profile</h1>
+        </div
+            <p style="font-weight: 700">
+                Name:
+                <asp:Label ID="lblName" runat="server"></asp:Label>
+            </p>
+            <p style="font-weight: 700">
+                Surname:
+                <asp:Label ID="lblSurname" runat="server"></asp:Label>
+            </p>
+            <p style="font-weight: 700">
+                Email Address:
+                <asp:Label ID="lblEmail" runat="server"></asp:Label>
+            </p>
+            <p style="font-weight: 700">
+                Cell Number:
+                <asp:Label ID="lblCellNumber" runat="server"></asp:Label>
+            </p>
+            <p style="font-weight: 700">
+                &nbsp;</p>
+            <p style="font-weight: 700">
+                <asp:Button ID="btnEditInfo" runat="server" OnClick="btnEditInfo_Click" Text="Edit Info" Width="144px" />
+            </p>
         </asp:Panel>
         <asp:Panel ID="EditPanel" runat="server" CssClass="w-full" Height="289px" style="margin-top: 22px;padding: 1rem;display:flex;justify-content:center;align-items:center;flex-direction:column">
             <h2 class="text-2xl">Edit Profile</h2>
