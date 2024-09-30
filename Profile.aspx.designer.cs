@@ -24,6 +24,15 @@ namespace cmpg223project
         protected global::System.Web.UI.WebControls.LinkButton logout;
 
         /// <summary>
+        /// ViewPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ViewPanel;
+
+        /// <summary>
         /// lblName control.
         /// </summary>
         /// <remarks>

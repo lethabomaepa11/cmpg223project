@@ -251,6 +251,9 @@
             flex-direction: column;
             width: 70%;
         }
+        .error{
+            color: indianred;
+        }
         
     </style>
 </head>
@@ -266,9 +269,10 @@
                     <div>
                          <label for="txtCheckIn">Check-in Date:</label>
                          <asp:TextBox type="date" ID="txtCheckIn" runat="server" required></asp:TextBox>
-
+                        <asp:Label runat="server" CssClass="error" ID="checkInError"></asp:Label>
                          <label for="txtCheckOut">Check-out Date:</label>
                          <asp:TextBox type="date" id="txtCheckOut" runat="server" required></asp:TextBox>
+                         <asp:Label runat="server" CssClass="error" ID="checkOutError"></asp:Label>
 
                          <label for="ddlAdults">Number of Adults:</label>
                          <asp:DropDownList ID="DropDownList3" runat="server">
@@ -320,7 +324,7 @@
                 <asp:View ID="Contact" runat="server">
                     
                     <div class="flex">
-                        <asp:MultiView ID="MultiViewContact" runat="server">
+                        <asp:MultiView OnActiveViewChanged="trackViewChanged" ID="MultiViewContact" runat="server">
                             <asp:View ID="accountQuestions" runat="server">
                                 <asp:Label ID="lblLoginStatus" runat="server" Text="Do you have an account with the Potch Stream Hotel?"></asp:Label>
                                 <asp:RadioButtonList OnSelectedIndexChanged="accountQuestion" ID="rbLoginStatus" runat="server" AutoPostBack="True">
@@ -329,7 +333,7 @@
                                 </asp:RadioButtonList>
                             </asp:View>
                             <asp:View ID="View1" runat="server">
-                                <p>Enter your contact details</p>
+                                <asp:Label runat="server" ID="clientAlert" Text="Complete the form below to proceed."></asp:Label>
                                 <main class="form w-full sm:w-2/5 p-2">
                                         <asp:Label CssClass="label" ID="LblName" runat="server" Text="Name:"></asp:Label>
                                         <asp:TextBox CssClass="rounded-md w-full" ID="TxtbName" runat="server"></asp:TextBox>

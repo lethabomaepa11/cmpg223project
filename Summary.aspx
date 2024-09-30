@@ -70,7 +70,7 @@
                                 <td><asp:Label runat="server" ID="lblPhone"></asp:Label></td>
                             </tr>
                             <tr>
-                                <th scope="row">Reservance code</th>
+                                <th scope="row">Reservation code</th>
                                 <td><asp:Label runat="server" ID="lblCode"></asp:Label></td>
                             </tr>
                             <tr>

@@ -18,7 +18,22 @@ namespace cmpg223project
             else
             {
                 lblAmount.Text += double.Parse(Session["amount"].ToString()).ToString("c");
+                lblCheckIn.Text = Session["check_in"].ToString();
+                lblCheckOut.Text = Session["check_out"].ToString();
+                lblNumPeople.Text = Session["num_people"].ToString();
+                lblName.Text = Session["name"].ToString();
+                lblEmail.Text = Session["email"].ToString();
+                lblPhone.Text = Session["cell"].ToString();
+                lblSurname.Text = Session["surname"].ToString();
+                string[] rooms = Session["rooms"].ToString().Split('%');
+                int num_rooms = rooms.Length - 1;
+                lblNumRooms.Text = num_rooms.ToString();
             }
+        }
+        protected void editBookingInfo(object sender, EventArgs e)
+        {
+            Session["editBookingInfo"] = true;
+            Response.Redirect("/booking");
         }
         protected void confirmPayment(object sender, EventArgs e)
         {

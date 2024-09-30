@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace cmpg223project
 {
@@ -66,6 +67,19 @@ namespace cmpg223project
                 autoFill();
             
             }
+            if (Session["editBookingInfo"] != null)
+            {
+                //Session["editBookingInfo"] = null;
+                MultiView1.ActiveViewIndex = 0;
+                txtCheckIn.Text = Session["check_in"].ToString();
+                txtCheckOut.Text = Session["check_out"].ToString();
+                //DropDownList3.Text = Session["num_people"].ToString();
+                TxtbName.Text = Session["name"].ToString();
+                TxtbEmail.Text = Session["email"].ToString();
+                TxtbSurname.Text = Session["surname"].ToString();
+                TxtbCellphone.Text = Session["cell"].ToString();
+                MultiViewContact.ActiveViewIndex = 1;
+            }
 
 
         }
@@ -76,13 +90,29 @@ namespace cmpg223project
             {
                 DataRow row = db.clientData.Rows[0];
                 TxtbCellphone.Text = row["cell_number"].ToString();
+                TxtbCellphone.Enabled = false;
                 TxtbEmail.Text = row["email"].ToString();
+                TxtbEmail.Enabled = false;
                 TxtbName.Text = row["name"].ToString();
+                TxtbName.Enabled = false;
                 TxtbSurname.Text = row["surname"].ToString();
-
+                TxtbSurname.Enabled = false;
+                clientAlert.Text = "Your information has been autofilled since you are logged in as " + row["name"].ToString() + " " + row["surname"].ToString();
+            }
+            
+        }
+        protected void trackViewChanged(object sender, EventArgs e)
+        {
+            if(MultiViewContact.ActiveViewIndex == 0)
+            {
+                if (Session["editBookingInfo"] != null)
+                {
+                    Session["editBookingInfo"] = null;
+                    MultiViewContact.ActiveViewIndex = 1;
+                }
             }
         }
-        protected void accountQuestion(object sender, EventArgs e)
+            protected void accountQuestion(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 2;
             if (rbLoginStatus.SelectedIndex == 0)
@@ -94,6 +124,10 @@ namespace cmpg223project
             else
             {
                 MultiViewContact.ActiveViewIndex = 1;
+                if (Session["session_id"] != null)
+                {
+                    autoFill();
+                }
             }
         }
         protected void SelectRoom_Click(object sender, EventArgs e)
@@ -160,26 +194,34 @@ namespace cmpg223project
         }
         protected void toPayment(object sender, EventArgs e)
         {
+            string name, surname, cell, email;
+            name = TxtbName.Text;
+            surname = TxtbSurname.Text;
+            email = TxtbEmail.Text;
+            cell = TxtbCellphone.Text;
             if (Session["session_id"] == null)
             {
                 //if this user is not a logged_in user
                 //receive every input and insert into db
-                string name, surname, cell, email;
-                name = TxtbName.Text;
-                surname = TxtbSurname.Text;
-                email = TxtbEmail.Text;
-                cell = TxtbCellphone.Text;
-
+                Session["name"] = name;
+                Session["surname"] = surname;
+                Session["email"] = email;
+                Session["cell"] = cell;
+                    
                 Client client = new Client(email,name,surname,cell);
                 if (db.insertClients(client))
                 {
                     Session["booking_email"] = email;
                 }
-                
+                Session["booking_email"] = email;
             }
             else
             {
                 Session["booking_email"] = Session["session_id"];
+                Session["name"] = name;
+                Session["surname"] = surname;
+                Session["email"] = email;
+                Session["cell"] = cell;
             }
             
             Response.Redirect("/payment");
@@ -190,12 +232,33 @@ namespace cmpg223project
             //if the button was clicked on the first page
             if(MultiView1.ActiveViewIndex == 0)
             {
-                Session["check_in"] = txtCheckIn.Text;
-                Session["check_out"] = txtCheckOut.Text;
-                int num_people = int.Parse(DropDownList2.SelectedValue) + int.Parse(DropDownList3.SelectedValue);
-                Session["num_people"] = num_people;
+                DateTime checkIn = DateTime.Parse(txtCheckIn.Text);
+                DateTime checkOut = DateTime.Parse(txtCheckOut.Text);
+                //check if the the check in date is in the past or future
+                if ( checkIn.CompareTo(DateTime.Now.AddDays(-1)) > -1)
+                {
+                    checkInError.Text = "";
+                    //check if the the check out date is before the check in date or more than 10days after the check in date
+                    if (checkOut.CompareTo(checkIn) < 0 || checkOut.CompareTo(checkIn.AddDays(11)) > 0)
+                    {
+                        checkOutError.Text = "Check out date must be between 1 to 10 days after check in date";
+                    }
+                    else
+                    {
+                        checkOutError.Text = "";
+                        Session["check_in"] = txtCheckIn.Text;
+                        Session["check_out"] = txtCheckOut.Text;
+                        int num_people = int.Parse(DropDownList2.SelectedValue) + int.Parse(DropDownList3.SelectedValue);
+                        Session["num_people"] = num_people;
+                        MultiView1.ActiveViewIndex++;
+                    }
+                }
+                else
+                {
+                    checkInError.Text = "Check in date cannot be in the past!!";
+                }
             }
-            MultiView1.ActiveViewIndex++;
+            
 
         }
         protected void prevPage(object sender, EventArgs e)

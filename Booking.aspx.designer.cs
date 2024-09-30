@@ -51,6 +51,15 @@ namespace cmpg223project
         protected global::System.Web.UI.WebControls.TextBox txtCheckIn;
 
         /// <summary>
+        /// checkInError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label checkInError;
+
+        /// <summary>
         /// txtCheckOut control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace cmpg223project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCheckOut;
+
+        /// <summary>
+        /// checkOutError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label checkOutError;
 
         /// <summary>
         /// DropDownList3 control.
@@ -193,6 +211,15 @@ namespace cmpg223project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View View1;
+
+        /// <summary>
+        /// clientAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label clientAlert;
 
         /// <summary>
         /// LblName control.

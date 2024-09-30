@@ -39,6 +39,12 @@ namespace cmpg223project
                     lblAmount.Text = booking["price"].ToString();
                     //must include check_in,out and price
 
+                    //clear all the session variables excluding the session_id
+                    Session["booking_email"] = null;
+                    Session["code"] = null;
+                    Session["rooms"] = null;
+                    Session["amount"] = null;
+                    Session["from_login"] = null;
                 }
 
             }
