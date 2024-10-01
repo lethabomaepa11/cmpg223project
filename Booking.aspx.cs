@@ -133,10 +133,14 @@ namespace cmpg223project
         protected void SelectRoom_Click(object sender, EventArgs e)
         {
             lblSelectedRooms.Text = "";
+            lblShowCalculations.Text = string.Empty;
             btnClear.Visible = true;
             btnBookNow.Visible = true;
             Button btnSelect = (Button)sender;
             string roomId = btnSelect.CommandArgument;
+            string checkIn = Session["check_in"].ToString();
+            string checkOut = Session["check_out"].ToString();
+            int days = DateTime.Parse(checkOut).Subtract(DateTime.Parse(checkIn)).Days;
             //string rooms = null;//will be divided by %
             if(Session["rooms"] != null)
             {
@@ -162,13 +166,15 @@ namespace cmpg223project
                 if(db.selectRooms($"WHERE room_id = '{id}'"))
                 {
                     DataRow row = db.roomData.Rows[0];
-                    amount += decimal.Parse(row["price"].ToString());
+                    amount += decimal.Parse(row["price"].ToString())*days;
+                    //lblShowCalculations.Text += decimal.Parse(row["price"].ToString()) + " + ";
                 }
                 
                 
             }
-            
-            lblAmount.Text = "Total Amount: "+ amount.ToString("c");
+            //show calculations when user requests them
+            lblAmount.Text =  amount.ToString("c");
+            lblShowCalculations.Text += "For " + days.ToString() + " days the total is:";
             Session["amount"] = amount;
             MultiView1.ActiveViewIndex = 1;
         }
@@ -184,6 +190,7 @@ namespace cmpg223project
             }
             lblSelectedRooms.Text = "No rooms selected!";
             MultiView1.ActiveViewIndex = 1;
+            lblShowCalculations.Text = "";
         }
 
             protected void addRoomID(object sender, EventArgs e)

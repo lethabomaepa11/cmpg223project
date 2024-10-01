@@ -254,7 +254,11 @@
         .error{
             color: indianred;
         }
-        
+        .text-black{
+            color: black;
+            font-weight: normal;
+            font-size: 11pt;
+        }
     </style>
 </head>
 <body>
@@ -264,8 +268,6 @@
             <a href="javascript: history.go(-1)"><i style="font-size: 1.3rem" class="fa fa-arrow-left"></i> Back</a> 
             <asp:MultiView ID="MultiView1" runat="server">
                 <asp:View ID="roomRequest" runat="server">
-                    
-                    <p>RoomRequest</p>
                     <div>
                          <label for="txtCheckIn">Check-in Date:</label>
                          <asp:TextBox type="date" ID="txtCheckIn" runat="server" required></asp:TextBox>
@@ -296,26 +298,27 @@
                     
                 </asp:View>
                 <asp:View ID="roomRates" runat="server">
-                    
-                    <p>Select one or more rooms below, when you are done click Book Now</p>
+                    <h3>Choose your room(s)</h3>
+                    <p>Below are the room rates per stay.</p>
                     <main class="flex-between">
                           <div class="room-container">
                               <asp:Repeater ID="rooms" runat="server">
                                   <ItemTemplate>
                                       <div class="room-card">
                                       <img src='<%# Eval("image_url") %>' alt='<%# Eval("description") %>' />
-                                      <h3><%# Eval("description") %></h3>
-                                      <p class="price"> <%# Eval("price", "{0:c}") %></p>
+                                      <p><%# Eval("description") %></p>
+                                      <h3 class="price"> <%# Eval("price", "{0:c}") %><span class="text-black"> a night</span></h3>
                                       <asp:Button ID="btnSelect" runat="server" Text="Select" OnClick="SelectRoom_Click" CommandArgument='<%# Eval("room_id") %>' />
                               </div>
                                   </ItemTemplate>
                               </asp:Repeater>
                           </div>
                         <div class="selectedRooms room-card">
+                            <asp:Label runat="server" ID="lblShowCalculations"></asp:Label>
                             <asp:Label runat="server" ID="lblSelectedRooms">
 
                             </asp:Label>
-                            <asp:Label runat="server" ID="lblAmount"></asp:Label><br />
+                            <h3><asp:Label runat="server" ID="lblAmount"></asp:Label></h3><br />
                             <asp:Button runat="server" Text="Book Now" OnClick="nextPager" ID="btnBookNow"/><br />
                             <asp:Button CssClass="btn-cancel" ID="btnClear" OnClick="clearSelection" BackColor="red" runat="server" Text="Clear" />
                         </div>
