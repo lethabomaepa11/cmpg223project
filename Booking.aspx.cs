@@ -85,6 +85,7 @@ namespace cmpg223project
         }
         public void autoFill()
         {
+            Session["back_path"] = null;
             string email = Session["session_id"].ToString();
             if (db.selectClients($"WHERE email = '{email}'"))
             {
@@ -176,6 +177,8 @@ namespace cmpg223project
             lblAmount.Text =  amount.ToString("c");
             lblShowCalculations.Text += "For " + days.ToString() + " days the total is:";
             Session["amount"] = amount;
+            //to prevent the bug where the amount gets discounted everytime after a reload in payment.aspx
+            Session["initAmount"] = amount;
             MultiView1.ActiveViewIndex = 1;
         }
         protected void clearSelection(object sender, EventArgs e)
@@ -246,9 +249,9 @@ namespace cmpg223project
                 {
                     checkInError.Text = "";
                     //check if the the check out date is before the check in date or more than 10days after the check in date
-                    if (checkOut.CompareTo(checkIn) < 0 || checkOut.CompareTo(checkIn.AddDays(11)) > 0)
+                    if (checkOut.CompareTo(checkIn.AddDays(1)) < 0 || checkOut.CompareTo(checkIn.AddDays(31)) > 0)
                     {
-                        checkOutError.Text = "Check out date must be between 1 to 10 days after check in date";
+                        checkOutError.Text = "Check out date must be between 1 to 31 days after check in date";
                     }
                     else
                     {

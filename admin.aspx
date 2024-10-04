@@ -37,12 +37,12 @@
                         <h1 class="text-2xl font-bold">PS<span class="text-yellow-300">Admin</span></h1>
                     </header>
                     <nav class="flex flex-col gap-1  p-3 rounded-lg">
-                        <asp:LinkButton ID="Home" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton1_Click"><i class="fa fa-chart-line"></i> Dashboard</asp:LinkButton>
-                        <asp:LinkButton ID="Lostfound" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton2_Click"><i class="fa fa-handshake"></i> Lost and Found</asp:LinkButton>
-                        <asp:LinkButton ID="bookings" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-database"></i> Bookings</asp:LinkButton>
-                        <asp:LinkButton ID="help" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-info-circle"></i> Help</asp:LinkButton>
+                        <asp:LinkButton CausesValidation="false" ID="Home" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton1_Click"><i class="fa fa-chart-line"></i> Dashboard</asp:LinkButton>
+                        <asp:LinkButton CausesValidation="false" ID="Lostfound" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton2_Click"><i class="fa fa-handshake"></i> Lost and Found</asp:LinkButton>
+                        <asp:LinkButton CausesValidation="false" ID="bookings" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-database"></i> Bookings</asp:LinkButton>
+                        <asp:LinkButton CausesValidation="false" ID="help" CssClass="w-full transtion-all hover:bg-blue-500 p-2 hover:rounded-md" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-info-circle"></i> Help</asp:LinkButton>
                     </nav>
-                    <asp:LinkButton runat="server" OnClick="Logout" CssClass="rounded-md bg-red-600 p-2 absolute bottom-0 mb-5 transition-all hover:bg-red-400" ID="logout"><i class="fa fa-right-from-bracket"></i> Logout</asp:LinkButton>
+                    <asp:LinkButton CausesValidation="false" runat="server" OnClick="Logout" CssClass="rounded-md bg-red-600 p-2 absolute bottom-0 mb-5 transition-all hover:bg-red-400" ID="logout"><i class="fa fa-right-from-bracket"></i> Logout</asp:LinkButton>
 
                 </div>
             </aside>
@@ -60,12 +60,17 @@
                         <main class="flex flex-col p-3 gap-3">
                             <div class="flex gap-2 flex-wrap text-white">
                                 <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
-                                    <asp:label runat="server" ID="lblNewBookings" class="font-bold text-lg">0</asp:label>
-                                    <p class="text-gray-300">New Bookings</p>
+                                    <asp:label runat="server" ID="lblRevenue" class="font-bold text-lg">0</asp:label>
+                                    <p class="text-gray-300">Total Revenue</p>
                                 </div>
                                 <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
                                     <asp:label runat="server" ID="lblTotalBookings" class="font-bold text-lg">0</asp:label>
                                     <p class="text-gray-300">Total Bookings</p>
+                                </div>
+                           
+                                <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
+                                    <asp:label runat="server" ID="lblAllUsers" class="font-bold text-lg">0</asp:label>
+                                    <p class="text-gray-300">Total Users</p>
                                 </div>
                                 <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all hover:-translate-y-2">
                                     <asp:label runat="server" ID="lblRegisteredClients" class="font-bold text-lg">0</asp:label>
@@ -81,25 +86,23 @@
                                 </div>
                             </div>
                             <section class="flex gap-2">
-                                <div class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
-                                    <h1 class="font-bold">New Bookings</h1>
-                                    <asp:LinkButton runat="server" OnClick="LinkButton3_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
+                                <asp:LinkButton runat="server" OnClick="LinkButton3_Click" class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
+                                    <h1 class="font-bold">Bookings</h1>
+                                    <i class="fa fa-up-right-from-square"></i>
                                     
-                                </div>
-                                <div class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
-                                    <h1 class="font-bold">New Lost and found items</h1>
-                                    <asp:LinkButton runat="server" OnClick="LinkButton2_Click">View All <i class="fa fa-up-right-from-square"></i></asp:LinkButton>
-                                    
-
-                                </div>
+                                </asp:LinkButton>
+                                <asp:LinkButton runat="server" OnClick="LinkButton2_Click" class="text-white rounded-lg w-2/4 p-3  flex justify-between p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
+                                    <h1 class="font-bold">Lost and found items</h1>
+                                    <i class="fa fa-up-right-from-square"></i>
+                                </asp:LinkButton>
                             </section>
                             <section class="flex justify-between">    
                                 <div id="datepicker-actions" datepicker datepicker-autoselect-today></div>
                                 <div class="text-white w-4/6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-4 transition-all">
-                                    <h1>Charts Registered Clients VS Non-registered</h1>
-                                    <asp:Chart ID="ClientsChart" runat="server">
+                                    <h1>Top Clients</h1>
+                                    <asp:Chart ID="ClientsChart" runat="server" CssClass="w-full">
                                         <Series>
-                                            <asp:Series Name="Series1" ChartType="Bar"></asp:Series>
+                                            <asp:Series Name="Series1"></asp:Series>
                                         </Series>
                                         <ChartAreas>
                                             <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
@@ -158,10 +161,14 @@
                                                 </div>
                                                 <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Choose a room Number" ControlToValidate="roomID"></asp:RequiredFieldValidator>
                                                 <div class="col-span-2">
+                                                    <label for="dateFound" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date found</label>
+                                                    <asp:TextBox runat="server" Text="A " ID="txtDateFound" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="date" placeholder="Enter date you found the item"></asp:TextBox>      
+                                                    <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Date Required!!" ControlToValidate="txtDateFound"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-span-2">
                                                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Description</label>
-                                                    <asp:TextBox runat="server" Text="A " ID="txtDescription" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></asp:TextBox>      
+                                                    <asp:TextBox runat="server"  ID="txtDescription" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></asp:TextBox>      
                                                     <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="error" runat="server" ErrorMessage="Description Required!!" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
-
                                                 </div>
                                             </div>
                                             <asp:LinkButton runat="server" ID="btnAddLostFound" OnClick="addLostFound" class="flex w-2/3 justify-center items-center text-white gap-2 inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -198,6 +205,7 @@
 
                     </asp:View>
                     <asp:View ID="View3" runat="server">
+                        <!--Bookings page-->
                         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                             <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -206,14 +214,29 @@
                             </a>
                           </div>
                         </nav>
-                           <!--- Use GridView -->
                             <asp:Label runat="server" CssClass="text-red-500" ID="bookingsEmpty"></asp:Label>
                         <div class="overflow-auto w-fit h-2/3">
                             <div class="flex gap-5 items-center py-10">
-                                <p class="text-white font-bold ">Search By Date: </p>
-                                <asp:TextBox CssClass="p-3 rounded "  runat="server" type="date" ID="searchDate"></asp:TextBox>
-                                <asp:Button CssClass="p-3 bg-blue-500 text-white px-10 rounded" runat="server" OnClick="Search_Click" Text="Search" />
+                                <p class="text-white font-bold ">Filter By Date: </p>
+                                <div class="flex flex-col">
+                                    <asp:TextBox CssClass="p-3 rounded"  runat="server" type="date" ID="searchDate"></asp:TextBox>
+                                    <asp:RequiredFieldValidator CssClass="text-red-400 font-bold text-sm" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Date is required!!" ControlToValidate="searchDate"></asp:RequiredFieldValidator>
+                                </div>
+                                <asp:Button CssClass="p-3 bg-blue-500 text-white px-10 rounded" runat="server" OnClick="Search_Click" Text="Filter" />
                                 <asp:Button CssClass="p-3 bg-red-500 text-white px-10 rounded" runat="server" OnClick="ResetBookingFilter" Text="Reset" />
+                            </div>
+                            <div class="flex gap-2 mb-3">
+                                <p class="text-white">Sort by:</p>
+                                <asp:DropDownList OnSelectedIndexChanged="sortBookings" AutoPostBack="true" runat="server" ID="dropSortBookings">
+                                    <asp:ListItem Value="price ASC">Price Ascending</asp:ListItem>
+                                    <asp:ListItem Value="price DESC">Price Descending</asp:ListItem>
+                                    <asp:ListItem Value="num_people ASC">Number of People ASC</asp:ListItem>
+                                    <asp:ListItem Value="num_people DESC">Number of People DESC</asp:ListItem>
+                                    <asp:ListItem Value="num_rooms ASC">Number of Rooms ASC</asp:ListItem>
+                                    <asp:ListItem Value="num_rooms DESC">Number of Rooms DESC</asp:ListItem>
+                                    <asp:ListItem Value="check_in ASC">Check in ASC</asp:ListItem>
+                                    <asp:ListItem Value="check_in DESC">Check in DESC</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                             
                             <asp:GridView AllowSorting="true" OnSorting="gridBookings_Sorting" ID="gridBookings" runat="server" BackColor="White" BorderColor="#CCCCCC" Rad BorderWidth="0px" CellPadding="8" GridLines="Horizontal" ForeColor="Black">

@@ -49,7 +49,6 @@ namespace cmpg223project
             if(db.selectBookings($"WHERE reservation_code = '{code}' AND user_email = '{email}'"))
             {
                 db.checkLostFound(code);
-                lblTest.Text = ""+db.lostFoundData.Rows.Count;
                 foreach (DataRow row in db.lostFoundData.Rows)
                 {
                     if(row["item_id"] != DBNull.Value)
@@ -59,11 +58,14 @@ namespace cmpg223project
                         //lblTest.Text = id;
                     }
                 }
-                //Response.Redirect($"/#{code}");
+                resCode1.Text = code;
+                MultiView1.ActiveViewIndex = 3;
             }
             else
             {
-                //wrong details entered
+                //wrong details entered for the claim
+                lblError.Text = "Wrong details entered, try again.";
+                MultiView1.ActiveViewIndex = 1;
             }
         }
     }

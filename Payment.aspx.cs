@@ -18,8 +18,8 @@ namespace cmpg223project
             else
             {
                 lblAmount.Text += double.Parse(Session["amount"].ToString()).ToString("c");
-                lblCheckIn.Text = Session["check_in"].ToString();
-                lblCheckOut.Text = Session["check_out"].ToString();
+                lblCheckIn.Text = DateTime.Parse(Session["check_in"].ToString()).ToString("dddd, dd MMMM yyyy");
+                lblCheckOut.Text = DateTime.Parse(Session["check_out"].ToString()).ToString("dddd, dd MMMM yyyy");
                 lblNumPeople.Text = Session["num_people"].ToString();
                 lblName.Text = Session["name"].ToString();
                 lblEmail.Text = Session["email"].ToString();
@@ -29,14 +29,36 @@ namespace cmpg223project
                 int num_rooms = rooms.Length - 1;
                 lblNumRooms.Text = num_rooms.ToString();
             }
+
+            double amount = double.Parse(Session["initAmount"].ToString());
+            
+            double discount = amount * 0.09;
+            string finalDiscount = discount.ToString("c");
+            if (Session["session_id"] != null)
+            {
+                //show discount for user
+                lblDiscount.Text = $"Since you are a registered user, we have discounted you with {finalDiscount}";
+                lblAmount.Text = "New amount \n" + (amount - discount).ToString("c");
+                Session["amount"] = (amount - discount);
+            }
+            else
+            {
+                lblDiscount.Text = $"As a registered user, you would have qualified for a {finalDiscount}  discount";
+            }
         }
         protected void editBookingInfo(object sender, EventArgs e)
         {
             Session["editBookingInfo"] = true;
             Response.Redirect("/booking");
         }
+        protected void cancelBooking(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("/");
+        }
         protected void confirmPayment(object sender, EventArgs e)
         {
+            Session["from_login"] = null;
             //make the booking
             Database db = new Database();
             string email, check_in, check_out;

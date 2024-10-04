@@ -52,38 +52,66 @@
             border-radius: 8px;
         }
     </style>
+    <script>
+        const addSpace = (event) => {
+            const element = event.target;
+            //console.log(event);
+            const finalValue = element.value;
+            const arrIndexes = [4, 9, 14];//where the spaces should be placed
+            if (arrIndexes.includes(finalValue.length)) {
+                element.value += " ";
+                //console.log(element.value.length);
+            }
+            
+            if (finalValue.length == 19) {
+                element.value = element.value.substr(0, 18);
+            }
+        }
+        const addSlash = (event) => {
+            const element = event.target;
+            if (element.value.length == 2) {
+                element.value += "/";
+            }
+        }
+    </script>
     <link rel="stylesheet" href="CSS.css" />
 </head>
     
 <body>
     <form id="form1" runat="server" class="p-2 flex justify-around items-center gap-5">
-        <div class="flex flex-col w-2/4">
-            <a class="underline text-blue-500 m-2" href="javascript: history.go(-1)"><i style="font-size: 1.3rem" class="fa fa-arrow-left"></i> Back</a> 
-            <asp:Label ID="Label6" runat="server" CssClass="text-3xl" Text="Payment Details"></asp:Label>
-            <span>Credit/Debit Card</span>
-            <div class="icons flex">
-            <img src="https://i.imgur.com/2ISgYja.png" width="30">
-            <img src="https://i.imgur.com/W1vtnOV.png" width="30">
-            <img src="https://i.imgur.com/35tC99g.png" width="30">
-            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+        <div class="flex flex-col w-2/4 shadow-xl p-5">
+            <div class="flex gap-2 justify-between">
+                <div class="flex flex-col">
+                    <a class="underline text-blue-500 m-2" href="javascript: history.go(-1)"><i style="font-size: 1.3rem" class="fa fa-arrow-left"></i> Back</a> 
+                    <asp:Label ID="Label6" runat="server" CssClass="text-3xl" Text="Payment Details"></asp:Label>
+                    <span>Credit/Debit Card</span>
+                    <div class="icons flex">
+                    <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                    <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                    <img src="https://i.imgur.com/35tC99g.png" width="30">
+                    <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                    </div>
+                </div>
+                <img src="giphy.gif" alt="transact" class="h-[200px]" />
             </div>
             <asp:Label ID="Label4" runat="server" Text="Card Number"></asp:Label>
 
-            <asp:TextBox ID="TextBox2" runat="server" placeholder="XXXX XXXX XXXX XXXX"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" onkeypress="addSpace(event)" MaxLength="19" runat="server" placeholder="XXXX XXXX XXXX XXXX"></asp:TextBox>
 
-            <asp:Label ID="Label3" runat="server" Text="Expiry"></asp:Label>
-            <asp:TextBox ID="TextBox3" runat="server" placeholder="MM/YY"></asp:TextBox>
+            <asp:Label ID="Label3"  runat="server" Text="Expiry"></asp:Label>
+            <asp:TextBox ID="TextBox3" onkeypress="addSlash(event)" MaxLength="5" runat="server" placeholder="MM/YY"></asp:TextBox>
             <asp:Label ID="Label2" runat="server" Text="CVV/CVC"></asp:Label>
-            <asp:TextBox ID="TextBox4" runat="server" placeholder="XXX"></asp:TextBox>
+            <asp:TextBox ID="TextBox4" runat="server" MaxLength="3" placeholder="XXX"></asp:TextBox>
 
             <div>
-                <div class="btn btn-primary mb-3">
-                    <asp:Label runat="server" ID="lblAmount" Text="Total Payment: "></asp:Label>
-                    <span class="fas fa-arrow-right"></span>
+                <div class="btn btn-primary mb-3 divider flex flex-col p-10">
+                    <asp:Label CssClass="text-sm" runat="server" ID="lblDiscount"></asp:Label>
+                    <asp:Label CssClass="font-bold" runat="server" ID="lblAmount" Text="Total Payment: "></asp:Label>
                 </div>
+                <asp:Button runat="server" OnClick="cancelBooking" Text="Cancel Booking"/>
             </div>
         </div>
-        <div class="flex flex-col w-2/4">
+        <div class="flex flex-col w-2/4 shadow-2xl p-5 border border-black">
             <p>You can edit your booking info if you want to change it.</p>
             <table  class="table table-bordered">
                 <tbody>
@@ -121,6 +149,7 @@
                     </tr>
                 </tbody>
             </table>
+            <p class="text-red-500">Once your confirm your payment, the booking will be final.</p>
             <div class="flex gap-2 items-center">
                 <asp:LinkButton runat="server" OnClick="editBookingInfo" CssClass="bg-red-500 text-center text-white w-2/4  py-3 mt-3">Edit  <i class="fa fa-pen-to-square"></i></asp:LinkButton>
                 <asp:Button CssClass="confirm w-2/4 m-0" runat="server" ID="confirm"  OnClick="confirmPayment" Text="Confirm Payment"/>

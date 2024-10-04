@@ -288,7 +288,8 @@ namespace cmpg223project
                 if (result != null)
                 {
                     DateTime date = Convert.ToDateTime(result.ToString());
-                    sql = $"SELECT * FROM LostFoundItems WHERE found_date = '{date.AddDays(1)}' AND room_id = '{room_id}' AND description NOT LIKE '%claimed by%';";
+                    sql = $"SELECT * FROM LostFoundItems WHERE found_date = '{date.AddDays(1)}' AND description NOT LIKE '%claimed by%';";
+                    //this was taken out AND room_id = '{room_id}'
                     checkOutDate = sql;
                     command = new SqlCommand(sql, connection);
                     adapter = new SqlDataAdapter();

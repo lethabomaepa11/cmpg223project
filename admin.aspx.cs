@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -36,11 +37,22 @@ namespace cmpg223project
             //total bookings
             if (db.selectClients("WHERE client_type='b'"))
                 lblRegisteredClients.Text = "" + db.clientData.Rows.Count;
-            if(db.selectBookings())
-                lblTotalBookings.Text = ""+db.bookingData.Rows.Count;
+            if(db.selectClients())
+                lblAllUsers.Text = ""+(db.clientData.Rows.Count-1);
+            if (db.selectBookings("ORDER BY price DESC"))
+            {
+                double revenue = 0;
+                lblTotalBookings.Text = "" + db.bookingData.Rows.Count;
+                foreach(DataRow row in db.bookingData.Rows)
+                {
+                    revenue += double.Parse(row["price"].ToString());
+                }
+                lblRevenue.Text = revenue.ToString("c");
+            }
+                
             if (!IsPostBack)
             {
-                if (db.selectBookings())
+                if (db.selectBookings("ORDER BY price DESC"))
                     gridBookings.DataSource = db.bookingData; gridBookings.DataBind();
             }
             
@@ -57,17 +69,34 @@ namespace cmpg223project
                 roomID.DataTextField = "room_id";
                 roomID.DataValueField = "room_id";
                 roomID.DataBind();
+                
              
             }
-            DataTable mydata = new DataTable();
-            // Define the columns and their names
-            mydata.Columns.Add("Series Labels", typeof(string));
-            mydata.Columns.Add("Column A", typeof(int));
-            // Add the rows of data
-            mydata.Rows.Add(new int[] { 1, 4, 10, 4 });
-            
-            ClientsChart.DataSource = mydata;
-            ClientsChart.DataBind();
+            //chart to show top 5 most spenders 
+            DataTable ChartData = db.bookingData;
+            //Booking[] topBookings;
+            //storing total rows count to loop on each Record                          
+            string[] XPoints = new string[ChartData.Rows.Count];
+            int[] YPOints = new int[ChartData.Rows.Count];
+            for (int count = 0; count < 5; count++)
+            {
+                // store values for X axis  
+                XPoints[count] = ChartData.Rows[count]["user_email"].ToString();
+                //store values for Y Axis  
+                YPOints[count] = Convert.ToInt32(ChartData.Rows[count]["price"]);
+            }
+            //binding chart control  
+            ClientsChart.Series[0].Points.DataBindXY(XPoints, YPOints);
+            ClientsChart.Series[0].Label = "#VALX \t R #VALY";
+            ClientsChart.Series[0].BorderWidth = 2;
+            ClientsChart.Series[0].BorderColor = Color.White;
+            //setting Chart type   
+            ClientsChart.Series[0].ChartType = SeriesChartType.Doughnut;
+            //enable to show legend
+            ClientsChart.Series[0].LegendText = "#VALX";
+           // ClientsChart.Legends[0].Enabled = true;
+            //show chart in 3d
+            //ClientsChart.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
 
 
         }
@@ -85,7 +114,7 @@ namespace cmpg223project
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 1;//bookings
-            if (db.selectBookings("ORDER BY check_in DESC"))
+            if (db.selectBookings("ORDER BY price DESC"))
             {
                 bookingsEmpty.Text = "";
                 gridBookings.DataSource = db.bookingData;
@@ -96,6 +125,16 @@ namespace cmpg223project
                 bookingsEmpty.Text = "Nothing to see here...";
             }
             
+        }
+        protected void sortBookings(object sender, EventArgs e)
+        {
+            string sorter = dropSortBookings.Text;
+            if(db.selectBookings($"ORDER BY {sorter}"))
+            {
+                gridBookings.DataSource = db.bookingData;
+                gridBookings.DataBind();
+                MultiView1.ActiveViewIndex = 2;//bookings
+            }
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
@@ -119,8 +158,9 @@ namespace cmpg223project
             string room = roomID.SelectedValue;
             
             string description = txtDescription.Text;
-            DateTime today = DateTime.Now.Date;
-            LostFound item = new LostFound(description, today, room);
+            lblClaimedItems.Text = room;
+            DateTime dateFound = DateTime.Parse(txtDateFound.Text);
+            LostFound item = new LostFound(description, dateFound, room);
             if (db.insertLostFound(item))
             {
                 //success message
@@ -161,6 +201,7 @@ namespace cmpg223project
         protected void gridLostFound_RowEditing(object sender, GridViewEditEventArgs e)
         {
             //display the edit form and give the id of the lost found
+            //Response.Redirect("/auth");
         }
 
         protected void gridBookings_Sorting(object sender, GridViewSortEventArgs e)
