@@ -241,7 +241,7 @@ namespace cmpg223project
         public DataTable roomData = new DataTable();//move to top
         public bool selectRooms(string condition = "")
         {
-            sql = $"SELECT room_id, description, price, image_url FROM Rooms {condition}";
+            sql = $"SELECT * FROM Rooms {condition}";
             command = new SqlCommand(sql, connection);
             adapter = new SqlDataAdapter();
             adapter.SelectCommand = command;

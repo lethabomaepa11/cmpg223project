@@ -159,6 +159,7 @@ namespace cmpg223project
             string[] ids = rooms.Split('%');
             //lblSelectedRooms.Text = ""+ids.Length;
             amount = 0;
+            int capacity = 0;
             
             foreach(string id in ids)
             {
@@ -167,15 +168,31 @@ namespace cmpg223project
                 if(db.selectRooms($"WHERE room_id = '{id}'"))
                 {
                     DataRow row = db.roomData.Rows[0];
-                    amount += decimal.Parse(row["price"].ToString())*days;
+                    amount += decimal.Parse(row["price"].ToString())*days-1;//if you check in today(07 Oct) and check out (10 Oct) its not 3 nights but 2 nights, 07 and 08 
+                    capacity += int.Parse(row["limit"].ToString());
                     //lblShowCalculations.Text += decimal.Parse(row["price"].ToString()) + " + ";
                 }
                 
                 
             }
-            //show calculations when user requests them
+            //check if the number of people are more than the capacity of the rooms
+            int num_people = int.Parse(Session["num_people"].ToString());
+            if(num_people > capacity)
+            {
+                lblShowCalculations.Text = $"You might have to choose another room because {num_people-capacity} people will not be accomodated";
+                btnBookNow.Enabled = false;
+                btnBookNow.Visible = false;
+                btnBookNow.Text = "You cannot proceed!";
+            }
+            else
+            {
+                btnBookNow.Visible = true;
+                btnBookNow.Enabled = true;
+                btnBookNow.Text = "Book now";
+                lblShowCalculations.Text += "For " + days.ToString() + " nights the total is:";
+            }
+            //show calculations 
             lblAmount.Text =  amount.ToString("c");
-            lblShowCalculations.Text += "For " + days.ToString() + " days the total is:";
             Session["amount"] = amount;
             //to prevent the bug where the amount gets discounted everytime after a reload in payment.aspx
             Session["initAmount"] = amount;

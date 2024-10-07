@@ -48,7 +48,7 @@
         <div class="container">
                 <div class="">
                 <div class="col-sm-12 bg-white" id="printable">
-                    <button id="printBtn" class="bg-blue-500 text-white p-3 my-1 rounded" onclick="print()">Download Page</button>
+                    <button id="printBtn" class="bg-blue-500 text-white p-3 my-1 rounded" onclick="print()">Download Invoice</button>
                     <p id="title" class="text-gray-600 font-bold text-2xl my-10"></p>
                     <table  class="table table-bordered">
                         <tbody>
