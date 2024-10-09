@@ -108,7 +108,7 @@
                     <asp:Label CssClass="text-sm" runat="server" ID="lblDiscount"></asp:Label>
                     <asp:Label CssClass="font-bold" runat="server" ID="lblAmount" Text="Total Payment: "></asp:Label>
                 </div>
-                <asp:Button runat="server" OnClick="cancelBooking" Text="Cancel Booking"/>
+                <asp:Button runat="server" CssClass="bg-red-500" style="background: red;" OnClick="cancelBooking" Text="Cancel Booking" />
             </div>
         </div>
         <div class="flex flex-col w-2/4 shadow-2xl p-5 border border-black">

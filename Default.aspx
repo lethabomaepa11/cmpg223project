@@ -1,12 +1,19 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="cmpg223project._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <main class="bg-secondary-emphasis d-flex flex-column justify-content-center align-items-center -mt-5 w-100 h-100 text-white"> 
+    
+    <main class="bg-secondary-emphasis bg-slate-50 pb-20 d-flex flex-column justify-content-center align-items-center -mt-5 w-100 h-100 text-white"> 
         <video class=" d-lg-inline h-70 w-100  " autoplay loop muted playsinline style="object-fit:fill;">
             <source src="Exterior/final version.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <section class="min-h-screen bg-slate-50 w-screen flex flex-col justify-center items-center">
+            <h1 class="text-5xl text-black font-bold">Making bookings is always <span class="line-through text-red-500">tough</span> easy with us.</h1>
+            <p class="text-black text-lg mt-2">Your booking experience has been over-simplified</p>
+            <a runat="server" href="~/booking"><button type="button" class="py-3 px-10  rounded-md bg-blue-500">Get Started now.</button></a>
+            <h1 class="mt-5 text-3xl text-black font-bold">Your lost items are safe with us, you can come and claim anytime</h1>
+            <a runat="server" href="~/lost-found.aspx"><button type="button" class="py-3 px-10  rounded-md bg-blue-500 mt-3">Click here to make a claim.</button></a>
+        </section>
         <div id="gallery" class="relative w-full mt-5" data-carousel="slide" style="object-fit:fill;">
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                  <!-- Pic 1 -->

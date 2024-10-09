@@ -15,7 +15,7 @@ namespace cmpg223project
             {
                 Response.Redirect("/booking");
             }
-            else
+            else if (Session["amount"] != null)
             {
                 lblAmount.Text += double.Parse(Session["amount"].ToString()).ToString("c");
                 lblCheckIn.Text = DateTime.Parse(Session["check_in"].ToString()).ToString("dddd, dd MMMM yyyy");
@@ -30,21 +30,21 @@ namespace cmpg223project
                 lblNumRooms.Text = num_rooms.ToString();
             }
 
-            double amount = double.Parse(Session["initAmount"].ToString());
-            
-            double discount = amount * 0.09;
+            decimal amount = (decimal)double.Parse(Session["initAmount"].ToString());
+            decimal discount = (amount * 0.09m);
             string finalDiscount = discount.ToString("c");
-            if (Session["session_id"] != null)
+            amount -= discount;
+            /*if (Session["session_id"] != null)
             {
                 //show discount for user
                 lblDiscount.Text = $"Since you are a registered user, we have discounted you with {finalDiscount}";
                 lblAmount.Text = "New amount \n" + (amount - discount).ToString("c");
-                Session["amount"] = (amount - discount);
+                Session["amount"] = amount;
             }
             else
             {
                 lblDiscount.Text = $"As a registered user, you would have qualified for a {finalDiscount}  discount";
-            }
+            }*/
         }
         protected void editBookingInfo(object sender, EventArgs e)
         {

@@ -51,7 +51,7 @@
         <asp:MultiView ID="MultiView1" runat="server">
             <asp:View ID="RegisterView" runat="server">
                 <div>
-                      <h1 class="font-bold text-xl">Potch Stream Hotel</h1>
+                      <a href="javascript: history.go(-1)"><i style="font-size: 2rem" class="fa fa-arrow-left"></i> Back</a> 
                       <img src="Exterior/k.png" alt="logo" class="hidden md:flex object-fit"/>
                       <asp:LinkButton CssClass="btn bg-slate-900 w-full"  runat="server" OnClick="ToLogin" CausesValidation="false">Login here...</asp:LinkButton>
 
@@ -96,8 +96,9 @@
             </asp:View>
             <asp:View ID="LoginView" runat="server">
                <div class="w-full flex flex-col items-center">
-                   <div class="flex bg-gray-900 justify-center items-center text-white fixed w-screen top-0">
-                       <h1 class="font-bold text-3xl mb-10 mt-2 align-center">Login</h1>
+                   <div class="flex bg-gray-900 items-center text-white fixed w-screen top-0 gap-10 py-8">
+                        <a href="javascript: history.go(-1)"><i style="font-size: 2rem;margin-left: 1rem;" class="fa fa-arrow-left"></i> Back</a> 
+                        <h1 class="font-bold text-3xl  align-center">Login</h1>
                    </div>
                    <main class="flex flex-col w-full sm:w-2/5 p-2 mt-24">
                     <asp:Label runat="server" ID="loginAlert" class="mb-5">Enter your login details to proceed</asp:Label>

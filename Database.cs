@@ -183,7 +183,7 @@ namespace cmpg223project
                 return rowsAffected > 0;
             }catch  (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception(ex.ToString());
             }
             
         }
