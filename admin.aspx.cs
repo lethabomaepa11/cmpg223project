@@ -87,7 +87,7 @@ namespace cmpg223project
             }
             //binding chart control  
             ClientsChart.Series[0].Points.DataBindXY(XPoints, YPOints);
-            ClientsChart.Series[0].Label = "#VALX \t R #VALY";
+            ClientsChart.Series[0].Label = "R #VALY";
             ClientsChart.Series[0].BorderWidth = 2;
             ClientsChart.Series[0].BorderColor = Color.White;
             //setting Chart type   
